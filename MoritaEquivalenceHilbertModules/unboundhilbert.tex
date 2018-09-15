@@ -1,0 +1,479 @@
+In order to work with unbounded $KK$-theory we need to get the basics of unbounded operators on Hilbert modules out of the way. Throughout this section, when nothing else is specified our operators lie in $L(E,F)$. 
+\begin{definition}
+	Given Hilbert $A$-modules $E,F$ we define an unbounded operator $T:E\to F$ to be an $A$-linear operator whose domain $\D(T)$ is a dense submodule of $E$. Given two such unbounded operators $S,T$ we define their sum on $\D(T)\cap \D(S)$, and $TS$ on $\{x\in \D(S):S(x)\in \D(T) \}$.  
+\end{definition}
+As for Hilbert spaces, we have the notion of the graph of an unbounded operator. 
+\begin{definition}
+	Given Hilbert $A$-modules $E,F$ the graph of an (unbounded) operator $T:E\to F$ is defined as $G(T)=(x,Tx)\in E\osum F$. There is a natural inner product on the graph, given as \begin{align*} \ip{(x,Tx)}{(y,Ty)}=\ip{y}{y}+\ip{Ty}{Ty} \end{align*}, which is simply the inner product on $E\osum F$ restricted to the graph. 
+\end{definition}
+We also need the notion of an adjoint.
+\begin{definition}
+	For an unbounded operator $T: E\to F$ we define a submodule $\D(T^*)$ of $F$ via. 
+	\begin{align*}
+		\D(T^*)=\{y\in F~| ~\exists z\in E, \ip{Tx}{y}=\ip{x}{z},\forall x\in \D(T)\}
+	\end{align*}
+The element $z$ is unqiue for every $y\in \D(T^*)$, and we denote this element by $T^*y$. This defines an $A$-linear map $T^*:\D(T^*)\to E$, satisfying $\ip{x}{T^*y}=\ip{Tx}{y}$ for $x\in \D(T),y\in \D(T^*)$. 
+An operator $T:\D(T)\to F$ is said to be closed if $(x_n)_{n\in \N}\subset \D(T)$ converging to $x\in \D(T)$ and $Tx_n\to y$, implies that $y=Tx$. 
+\end{definition}
+We have the following result describing the graph of the adjoint of an operator in terms of the graph of the original operator, while at the same time also showing that the adjoint is always closed. 
+\begin{lemma}
+	The adjoint of an unbounded operator is closed, and its graph satisfies $G(T^*)=U(G(T)^\perp)$, where $U\in L(E\osum F,F\osum E)$ is defined by $(x,y)\mapsto (y,-x)$.
+\end{lemma}
+\begin{proof}
+	Pick $(x,z)\in G(T)^\perp$, which is equivalent to $\ip{(x,z)}{(y,Ty)}=0$ for all $y\in \D(T)$, so we have the equality $\ip{x}{y}=-\ip{z}{Ty}$ for all $y\in \D(T)$. Applying $U$ to $(x,z)$, we get that the previous equality is equivalent to $\ip{y}{x}=\ip{Ty}{z}$, which is exactly the criterion for $U((x,z))\in G(T^*)$, showing the desired. 
+\end{proof} 
+We have a notion of symmetry, as well as self-adjointness which are defined as for Hilbert spaces.
+\begin{definition}
+	We define a semi-regular operator $T$ as an operator from a dense submodule $\D(T)$ of $E$ to $E$ with a densely defined adjoint. 
+\end{definition} 
+
+It will turn out that semi-regularity is too weak a condition, but it is sufficient to give us some data on the operator and it in some ways resembles a closable unbounded operator on a Hilbert space. 
+\begin{lemma}
+	Let $T$ be a semi-regular operator on $E$, then $T$ is $A$-linear and closable, ie. it has a closed extension. Further, the adjoint is closed and $(\overline{T})^*=T^*$. 
+\end{lemma}
+\begin{proof}
+	We start by showing closability. Let $x_n\to 0$ in $E$ and $Tx_n\to y$. Then we have
+	\begin{align*}
+		\ip{y}{w}&=\lim_{n\to\infty} \ip{Tx_n}{w} \\
+		&=\lim_{n\to\infty}\ip{x_n}{T^*w}=0
+	\end{align*}
+	So $y=0$ as the $T^*$ is densely defined, from this it can also be inferred that $((\overline{T})^*=T^*$. In order to see that $T$ is $A$-linear, one uses linearity of the inner product. 
+\end{proof}
+It turns out that semi-regularity is not enough to ensure that $T^*T+I$ is invertible, so we need to restrict ourselves to this class to look for the proper  replacement for closeable unbounded operators, essentially looking for the class where the minimal and extensions agree.
+\begin{definition}
+	If a closed semi-regular operator $T$ satisfies that $1+T^*T$ has dense range, we shall say that $T$ is regular. 
+\end{definition}
+We will now show some of the properties of regular operators, which we shall use freely and without reference in the remainder of this text. The gist of the following section is that we may use our intuition for unbounded operators on hilbert spaces to a certain degree when dealing with regular operators. 
+
+
+\subsection{Regular operators}
+We shall now study the properties of regular operators in some depth, establishing results showing that they do indeed take the place of unbounded operators on Hilbert space in the Hilbert \Cstar module setting. 
+\begin{lemma}\label{lance91}
+	If $T$ is regular, then $T^*T$ is densely defined.
+\end{lemma}
+\begin{proof}
+	The domain of $T^*T$ is 
+	\begin{align*}
+		\D(T^*T)=\{x\in \D(T)| Tx\in \D(T^*)\}
+	\end{align*}
+Consider $\overline{\D(T^*T)}$, and consider $\ran(1+T^*T)$. Let $x\in D(T^*T)$, we have the following 
+\begin{align*}
+	\ip{x}{(1+T^*T)x}=\ip{x}{x}+\ip{Tx}{Tx} \geq \ip{x}{x}
+\end{align*}
+which implies that $||(1+T^*T)x||\geq ||x||$, showing injectivity. Furthermore, it has a densely-defined inverse $(1+T^*T)^{-1}$ which is norm-reducing, and thereby extends to a bounded positive operator. In an abuse of notation we shall refer to this extension as $(1+T^*T)^{-1}$, as it will turn out eventually that the extension is unnecessary. 
+ As $(1+T^*T)^{-1}$ is positive and bounded, we may consider its square root, $(1+T^*T)^{-1/2}$. Clearly we have $\ran((1+T^*T)^{-1/2}) \subset \overline{\D(T^*T)}$. Consider some $y\in \ran(1+T^*T)$, then $(1+T^*T)^{-1}y\in \D(T^*T)$. Calculating, we see
+\begin{align*}
+	\ip{T(1+T^*T)^{-1}y}{T(1+T^*T)^{-1}y}&=\ip{(1+T^*T)^{-1}y}{T^*T(1+T^*T)^{-1}y} \\
+	&\leq \ip{(1+T^*T)^{-1}y}{(1+T^*T)(1+T^*T)^{-1}y}\\
+	&=\ip{(1+T^*T)^{-1}y}{y}\leq \ip{y}{y}
+\end{align*} 
+which implies $||T(1+T^*T)^{-1}y||\leq ||y||$ for all $y$ in some dense subset, so $T(1+T^*T)^{-1}$ is continuous. We can now show that the process of extending $T(1+T^*T)^{-1}$ is spurious by showing $\ran((1+T^*T)^{-1})\subset \D(T)$. In order to see this, fix $x\in E$. As $\ran(1+T^*T)$ is dense in $E$ there is a sequence $(z_n)_{n\in \N} \subset \D(T^*T)$ such that $(1+T^*T)^{-1}z_n\to x$ as $n\to \infty$. As $(1+T^*T)^{-1}$ is continuous, $z_n$ converges to $(1+T^*T)x$, as well as $Tz_n\to T(T^*T+1)^{-1}x$. As we have assumed that $T$ is closed, $(1+T^*T)x\in \D(T)$, as well as $T((1+T^*T)x)=T(1+T^*T)x$. 
+Proceeding, fix $x\in \D(T),y\in \D(T^*)$. As $(1+T^*T)^{-1}x\in \D(T)$ we get the following equalities
+\begin{align*}
+	\ip{x}{(1+T^*T)T^*y}=\ip{T((1+T^*T)^{-1}x)}{y}=\ip{T(1+T^*T)x}{y}
+\end{align*}
+where we take care to distinguish between $T$ composed with $(1+T^*T)^{-1}$ and the bounded operator arising as an extension thereof. The equalities imply $\norm{(1+T^*T)^{-1}T^*y}\leq \norm{y}$. This implies that $(1+T^*T)T^*:\D(T^*)\to E$ may be extended to a bounded map $F\to E$, which is the adjoint of the map $T(1+T^*T)^{-1}$. This implies that $T(1+T^*T)^{-1}$ is adjointable, satisying $\ran(R^*)\subset \overline{\D(T^*T)}$. We may now finalize the proof, by picking $y\in \ran(1+T^*T),z\in \D(T)$ and performing the calculations
+\begin{align*}
+	\ip{y}{((T(T^*T)^{-1})^*T+(1+T^*T)^{-1})z}&=\ip{(1+T^*T)^{-1}y}{z}+\ip{T(1+T^*T)^{-1}y}{Tz} \\
+	&=\ip{(T^*T+1)(1+T^*T)^{-1}y}{z}=\ip{y}{z}
+\end{align*}
+As $\ran(1+T^*T)$ is dense in $E$, the calculation shows that $z=((T(1+T^*T)^{-1})^*T+(1+T^*T)^{-1})z$, which implies $\D(T)\subset \overline{\D(T^*T)}$, thereby $\overline{\D(T^*T)}=E$. 
+\end{proof}
+With this lemma, we can now show that the domain of $\D(T^*T)$ is dense both in $E$ $\D(T)$ equipped with the graph norm. 
+\begin{lemma}
+	If $T$ is regular, then $\D(T^*T)$ is a core for $T$. 
+\end{lemma}
+\begin{proof}
+	As in the proof of \Cref{lance91}, for $y\in \ran(1+T^*T)$. we have the inequality
+	\begin{align*}
+		\ip{T(1+T^*T)^{-1}y}{T(1+T^*T)^{-1}y}\leq \ip{(1+T^*T)^{-1/2}y}{(1+T^*T)^{-1/2}y}
+	\end{align*}
+	giving that the mapping $(1+T^*T)^{-1/2}y\mapsto T(1+T^*T)y$ extends to a contraction $S:E\to F$. As with $T(1+T^*T)^{-1}$ in \Cref{lance91} extension is superflous, seeing as $T$ being closed implies $\ran((1+T^*T)^{-1})\subset \D(T)$, so that $S=T(1+T^*T)^{-1/2}$. We see by \Cref{lance91} that for $y\in \D(T)$ we have 
+	\begin{align*}
+		y&=((1+T^*T)^{-1}T^*T+(1+T^*T)^{-1})y \\
+		&=(1+T^*T)^{-1/2}((1+T^*T)^{-1/2}T^*T+(1+T^*T)^{-1/2})y\in \ran((1+T^*T)^{-1/2})
+	\end{align*}
+	giving us $\ran((1+T^*T)^{-1/2})=\D(T)$, giving $T=(T(1+T^*T)^{-1/2})(1+T^*T)^{1/2}$. 
+	Given $y\in \D(T)$, we may set $y=(1+T^*T)^{-1/2}x$ for some $x\in E$. Pick a sequence $(z_n)_{n\in \N}\subset \ran((1+T^*T))$, satisfying $(1+T^*T)^{-1/2}z_n\to x$. Thus  
+	\begin{align*}
+		(1+T^*T)^{-1}z_n &\to y\\
+		T(1+T^*T)^{-1/2}(1+T^*T)^{-1/2}z_n&\to T(1+T^*T)^{-1/2}x=T((1+T^*T)^{-1/2}x)=Ty
+	\end{align*}
+	implying that $\ip{(1+T^*T)^{-1}z_n}{T(1+T^*T)^{-1}z_n}\to (y,Ty)\in G(T)$. We have $(1+T^*T)^{-1}z_n\in \D(T^*T)$ as we have chosen $z_n\in \ran(1+T^*T)$, implying that $\D(T^*T)$ is a core for $T$. 
+\end{proof}
+A theorem illustrating that in a certain sense regularity is the correct condition is the following, namely that the graph of a regular operator is a complemented submodule, so it "looks like" the graph of a closed unbounded operator on a Hilbert space. 
+\begin{theorem}\label{lance93}
+	Let $E,F$ be a Hilbert $A$-modules, with $T:\D(T)\to F,\D(T)\subset E$ a regular operator. Let $U\in L(E\osum F,F\osum E)$ be the unitary given by $(x,y)\mapsto (y,-x)$. Then $G(T)\osum UG(T^*)=E\osum F$. 
+\end{theorem}
+\begin{proof}
+	As was seen when we defined the adjoint of an unbounded operator, $G(T)$ and $U(G(T^*))$ are orthogonal. Thus we need only show their sum is the entirety of $E\osum F$. 
+	Pick $x\in \D(T^*T)$ and $y\in E$. Then $(1+T^*T)^{-1}y\in \D(T)$ as $\ran((1+T^*T)^{-1})=\D(T)$. This justifies the following calculations
+	\begin{align*}
+		\ip{x}{y}=\ip{(1+T^*T)^{-1}(1+T^*T)x}{y}=\ip{x}{(1+T^*T)^{-1}y}+\ip{Tx}{T(1+T^*T)^{-1}y}
+	\end{align*}
+	giving the equality $\ip{Tx}{T(1+T^*T)^{-1}y}=\ip{x}{(1-(1+T^*T)^{-1})y}$. As $\D(T^*T)$ is a core for $T$ we have $T(1+T^*T)^{-1}y\in \D(T^*)$ as well as $T^*T(1+T^*T)^{-1}y=(1-(1+T^*T)^{-1})y$. This shows that the range of $(1+T^*T)$ is actually the entirety of $E$, and also that we have equality $\ran((1+T^*T)^{-1})=\D(T^*T)$. Finally, it justifies our abuse of notation as it shows that it is unnecessary to extend $(1+T^*T)^{-1}$. 
+	We define $B\in L(E,E\osum F)$ via. $Bx=((1+T^*T)^{-1}x,T(1+T^*T)^{-1}x)$. Then $B^*B=(1+T^*T)^{-1}+(1+T^*T)^{-1}T^*T(1+T^*T)^{-1}=1$. This gives us that $B$ is an isometry, and we may consider the projection $P=BB^*\in L(E\osum F)$ which can be written as the matrix
+	\begin{align*}
+		P=\begin{pmatrix} (1+T^*T)^{-1}  & (1+T^*T)^{-1/2}T^*(1+T^*T)^{-1/2} \\ T(1+T^*T)^{-1} & T(1+T^*T)^{-1}T^*\end{pmatrix}
+	\end{align*}
+	As $\ran(B)\subset G(T)$ it follows that $\ran(P)\subset G(T)$, so we need only show that $\ran(1-P)\subset U(G(T^*))$.
+	We rewrite $(1-P)$ to a more tractable form
+	\begin{align*}
+		1-P&=\begin{pmatrix} 1-(1+T^*T)^{-1} & -(1+T^*T)^{-1/2}T^*(1+T^*T)^{-1/2} \\ -T(1+T^*T)^{-1} & 1-T(1+T^*T)^{-1}T^*\end{pmatrix} \\
+		&=\begin{pmatrix} T^*T(1+T^*T)^{-1} & -(1+T^*T)^{-1/2}T^*(1+T^*T)^{-1/2} \\ -T(1+T^*T)^{-1} &  1-T(1+T^*T)^{-1}T^* \end{pmatrix}
+	\end{align*}
+	Proceeding, we have 
+	\begin{align*}
+		&(1-P)(x,y) \\
+		&=\begin{pmatrix} (1+T^*T)^{-1/2}T^*T(1+T^*T)^{-1/2}x \\ -T(1+T^*T)^{-1}x \end{pmatrix} -\begin{pmatrix} (1+T^*T)^{-1}T^*y \\ (T(1+T^*T)^{-1}T^*-1)y \end{pmatrix}
+	\end{align*}
+	so we may consider each term by itself. We have 
+	\begin{align*}
+		(1+T^*T)^{-1/2}T^*T(1+T^*T)^{-1/2}x=(1-(1+T^*T)^{-1})x=T^*T(1+T^*T)^{-1}x=T^*T(1+T^*T)^{-1}x
+	\end{align*}
+	as well as 
+	\begin{align*}
+		(1+T^*T)^{-1}T^*y&=(1-T^*T(1+T^*T)^{-1})T^*y \\
+		&=T^*(1-T(1+T^*T)^{-1}T^*)y=T^*(1-T(1+T^*T)^{-1}T^*)y
+	\end{align*}
+	by closedness of $T^*$ and density of $\D(T^*)$ we have $(1+T^*T)^{-1}T^*y=(1-T(1+T^*T)^{-1}T^*)y$. This is exactly what we desired, so we have shown the desired. 
+\end{proof}
+We have the result on regular operators, showing that the class is self-adjoint
+\begin{lemma}\label{reflexregular}
+	For $T$ a regular operator it holds that $T=(T^*)^*$ and $T^*$ is regular. 
+\end{lemma}
+\begin{proof}
+	It follows from the previous theorem that $G(T^{**})=G(T)^{\perp \perp}=G(T)$. To see that $T^*$ is regular, start by noting $T$ is closed by regularity and $E\osum F=G(T^*)\osum UG((T^*)^*)=G(T^*)\osum UG(T)$.
+	We have that $P:E\osum F\to G(T)$ is a positive element in $L(E\osum F)$, thereby has a matrix representation as $P=ae_11+b^*e_{12}+be_{21}+de_{22}$. As $\ran(1-p)=G(T^*)$ it can be seen that $\ran(a)\subset \D(T^*)$ for $b=T^*a$, $\ran(b)\subset \D(T)$ for $1-a=T^*b$. This implies that $\ran(a)\subset \D(TT^*),1-a=TT^*a$. Thereby $(1+TT^*)a=1$, implying that $1+TT^*$ is surjective, thereby $T^*$ is regular. 
+\end{proof}
+\begin{proposition}\label{closedrange}
+	Let $T$ be closed, densely defined, and symmetric with closed range over $E$. Then $T\pm i$ is injective with closed range. If $T$ is assumed to be self-adjoint with closed range, then $T$ is regular if and only if $T\pm i$ is surjective. 
+\end{proposition}
+\begin{proof}
+	Pick $x\in \D(T)$. Then we may perform the calculation 
+	\begin{align*}
+		\norm{(T+i)x}^2&=\ip{Tx+ix}{Tx+ix} \\
+		&=\ip{Tx}{Tx}-i\ip{x}{Tx}+i\ip{Tx}{x}+\ip{x}{x} \\
+		&=\norm{Tx}^2+\norm{x^2}
+		&=\norm{(x,Tx)}^2
+	\end{align*}
+	showing that $(x,Tx)\mapsto (T+i)x$ is isometric, as well as injectivity of $T+i$. By closedness of $G(T)$, $\ran(T+i)$ must also be closed. The calculation for $-i$ is completely analogous. 
+	Assuming that $T$ is regular, then $1+T^2$ has dense range, and is fact surjective as shown in the proof of \Cref{lance93}, implying that $(T+i)(T-i)$ is surjective as well as $(T-i)(T+i)$ giving that $T\pm i$ are both surjective. 
+	Conversely if $(T-i),(T+i)$ are both surjective, running the same argument we get $T^2+1$ is surjective. 
+\end{proof}
+Finally, we have the theorem which will allow us to reduce considerations on regular operators to self-adjoint regular operators, and thus freely switch between considering $T\pm i$  and $T^*T+1$. 
+\begin{proposition}
+	If $T:E\to F$ is regular, then $T^*T$ is self-adjoint and regular. 
+\end{proposition}
+\begin{proof}
+	By \Cref{lance91} we get that $\D(T^*T)$ is a dense submodule. As $(T^*T)$ is clearly symmetric, its adjoint will also be densely defined. To show self-adjointness we consider $(1+T^*T)^*=1+(T^*T)^*$. Pick $x\in E,y\in \D((T^*T)^*)$ and consider  $\ip{x}{y}=\ip{(1+T^*T)(1+T^*T)^{-1}x}{y}=\ip{x}{(1+T^*T)^{-1}(1+(T^*T)^*)y}$. As this equality holds for every $x\in E$ it follows that $y=(1+T^*T)^{-1}(1+T^*T)^*y\in \D(1+T^*T)$, showing $\D((T^*T)^*)=\D(T^*T)$. 
+	Fix $x\in E$ and define $y=(1+T^*T)^{-1}(1-(1-i)(1+T^*T)^{-1})^{-1}x$. Applying $T^*T+i$ to this, we retrieve $x$ as follows
+	\begin{align*}
+		&(T^*T+i)(1+T^*T)^{-1}(1-(1-i)(1+T^*T)^{-1})^{-1}x \\ 
+		=&((1-(1-i)(1+T^*T)^{-1})(1-(1-i)(1+T^*T)^{-1})^{-1}x=x
+	\end{align*}
+	showing that $T^*T+i$ and $T^*T-i$ are both surjective, as the case for $-i$ is completely analogous.
+\end{proof}
+With all these properties of regular operators, it would be nice to have a methode of seeing whether a semi-regular operator is regular. One such result is the following.
+\begin{lemma}
+	Let $T$ be semiregular and closed, then $T$ is regular if and only if the operator $\hat{T}:\D(T)\osum D(T^*)\to E^2,~\hat{T}=Te_{11}+T^*e_{2}2$ is self-adjoint and regular. 
+\end{lemma}
+\begin{proof}
+	Closure and symmetry of $\hat{T}$ follows immediately. If we assume $T$ is regular, then self-adjointess follows from \Cref{reflexregular}. Consider $1+\hat{T}^2$. This will be invertible as each of the terms $Ie_11+T^*Te_11$, $Ie_22+TT^*e_22$ will have dense range, as they are invertible. 
+	For the converse, assume that $\hat{T}$ is self-adjoint and regular. Then $1+\hat{T}^2$ will once again be invertible, but this implies that the matrix has dense range, so both diagonal entries must have dense range. 
+\end{proof}
+Another equivalent characterization of regularity which characterizes its geometric nature, is the following. 
+\begin{proposition}
+	A closed semi-regular operator is regular if and only if the map $\iota_T :\D(T)\to E$ is adjointable, with adjoint $(1+T^*T)^{-1}$. 
+\end{proposition}
+\begin{proof}
+	Assume $\iota_T:\D(T)\to E$ is adjointable with adjoint $(1+T^*T)^{-1}$. Then $T^*T+I$ will have dense range as it has a bounded inverse with a dense sub-module as range. 
+	For the converse, assume that $T^*T+I$ has dense range, then $(1+T^*T)^{-1}$ is well-defined. Necessarily, we have 
+	\begin{align*}
+		\ip{x}{z}=\ip{\iota_T x}{z}=\ip{x}{(\iota_T)^*z}_{\D(T)}=\ip{Tx}{T(\iota_T)^*z}+\ip{x}{(\iota_T)^*z}
+	\end{align*}
+	showing that the only possible candidate for $(\iota_T)^*$ is indeed $(1+T^*T)$, which we have assumed is well-defined.
+\end{proof}
+
+
+
+\subsection{Localizations}
+Having concluded our brief tour thorugh the world of regular operators, we have arrived at a point where we can consider localizations of operators
+\begin{definition}
+	Given a closed semi-regular operator $T$ on a Hilbert $A$-module $E$ as well as a representation $\pi$ of $A$ on the Hilbert space $H_\pi$ we define the localization $T_0^\pi$ on $\D(T)\tens H_\pi\subset E\tens H_\pi$. We define it via. the formula $T_0^\pi(x\tens h)=Tx\tens h$. The closure of this operator is denoted $T^\pi$ and is called the localization of $T$ with respect to $\pi$.
+\end{definition}
+We have a lemma concerning localizations which ensures us that the previous definition is meaningful. 
+\begin{lemma}
+	The operator $T_0^\pi$ is densely defined and closable with closure denoted $T^\pi$. We have the inclusion $(T^*)_0^\pi\subset (T_0^\pi)^*$, and the same for the closures. Thus the localization of a symmetric operator is once again symmetric. 
+\end{lemma}
+\begin{proof}
+	The submodule $\D(T)\tens H_{\pi}$ is clearly dense, and $T_0^\pi$ is well-defined on here. To see the inclusion of operators, consider the calculations below
+	\begin{align*}
+		\ip{T_0^\pi(x_1\tens h_1)}{(x_2\tens h_2)}&=\ip{h_1}{\pi(\ip{Tx_1}{x_2})h_2} \\
+		&=\ip{h_1}{\pi(\ip{x_1}{Tx_2})h_2}=\ip{x_1\tens h_1}{(T_0^\pi)^*(x_2\tens h_2)}
+	\end{align*}
+\end{proof}
+Before proceeding, we introduce another notation for the localization which we shall also be using occasionally.
+
+\begin{definition}Given a state $\omega$ on $A$ we can construct the localization $E^\omega$ of $E$ with respect to this state via. the (pre)-inner product $\omega(\ip{x}{y})$, where we take the quotient by the nullifier of the inner product and complete as usual. 
+\end{definition}
+ This corresponds to the representation stemming from the GNS representation of $A$ constructed from $\omega$, $(\pi_\omega,H_\omega,\xi_\omega)$. 
+We collect this remark in a lemma for future reference
+\begin{lemma}
+	The spaces $E^\omega$ and $E_{\pi_\omega}=E \tens H_\omega$ are isomorphic.
+\end{lemma}
+\begin{proof}
+	Consider the map $U:E^\omega \to E\tens H_\omega$, given by $\iota_\omega(e)\mapsto e\tens \xi_\omega$, where $\iota_w: E\to E^\omega$ is the quotient. This is clearly isometric and surjective, and being a map of Hilbert spaces it is implemented by a unitary.
+\end{proof}
+An essential tool we shall be needing to prove the Local-Global theorem is the following separation theorem 
+\begin{theorem}\label{separationthmweak}
+	Let $C\subset E$ be a closed convex subset of a Hilbert module $E$. For every vector $x_0$ in $E\setminus L$ there is a state $\omega$ on $A$ such that $\iota_\omega(x_0)$ does not lie in the closure of $\iota_\omega(L)$. In particular $\iota_\omega(L)$ is not necessarily dense in $E^\omega$
+\end{theorem}
+\begin{proof}
+	We would like to be able to use the Hahn-Banach separation theorem to show that $\iota_\omega(L)$ can be separated from the rest of $E^\omega$. Define $A=\{\ip{y-x_0}{y-x_0}: y\in L\}$, we would like to show that the closed convex hull of $A$ does not contain $0$. To this end, consider the following
+	\begin{align*}
+		\delta=\inf\{||y-x_0|| \mid y\in L\}=\inf \{||a||^2 \mid a\in A\}>0
+	\end{align*}
+	where strict positivity follows from $L$ being closed. Now consider a finite collection of vectors $y_i$ in $E$, and a convex combination of $\lambda_i,\lambda_i\in \R_+$. Then we may estimate as follows
+	\begin{align*}
+		\sum_{k,l=1}^n \lambda_k\lambda_l\ip{y_k}{y_l}&=\sum_{k=1}^n \lambda_k^2 \ip{y_k}{y_k}+\sum_{k<l}\lambda_k\lambda_l(\ip{y_l}{y_k}+\ip{y_k}{y_l}) \\
+		&\leq \sum_{k=1}^n \lambda_k^2 \ip{y_k}{y_k} +\sum_{k<l}\lambda_k\lambda_l(\ip{y_l}{y_l}+\ip{y_k}{y_k})  
+	\end{align*}
+	where we have exploited that $\ip{x}{y}+\ip{y}{x}\leq \ip{x}{x}+\ip{y}{y}$. Keeping this result in mind, consider the convex combination
+	\begin{align*}
+		\sum_{j=1}^n &\lambda_j \ip{y_j-x_0}{y_j-x_0} \\
+		&=\ip{x_0}{x_0}-\sum_{j=1}^n\lambda_j(\ip{y_j}{x_0}+\ip{x_0}{y_j})+\sum_{j=1}^n \lambda_j\ip{y_j}{y_j} \\
+		&\geq \ip{x_0}{x_0}-\sum_{j=1}^n\lambda_j(\ip{y_j}{x_0}+\ip{x_0}{y_j})+\sum_{k,l=1}^n \lambda_k\lambda_l\ip{y_k}{y_l} \\
+		&=\ip{x_0-\sum_{j=1}^n \lambda_j y_j}{x_0-\sum_{j=1}^n\lambda_j y_j}
+	\end{align*}
+	As $C$ is assumed convex, this assures us that 
+	\begin{align*}
+		\norm{\ip{x_0-\sum_{j=1}^n \lambda_j y_j}{x_0-\sum_{j=1}^n\lambda_j y_j}}\geq \delta
+	\end{align*}
+	Thus every element in the closure of the convex hull of $A$ is non-zero. Therefore we may now apply the Hahn-Banach separation theorem to get a continuous linear functional $\phi:A_{sa}\to \R$ and $\epsilon>0$ such that $\phi(b)>\epsilon$ for every $b\in \overline{\conv(A)}$. We extend the functional to a self-adjoint functional on the entirety of $A$ by defining $\phi_{tot}(x+iy)=\phi(x)+i\phi(y)$.
+	
+	By the Jordan decomposition theorem we can find two states on $A_{sa}^+$ such that $\phi=\omega_+-\omega_-$. Then $\omega_b\geq \phi(b)>0$ for $b\in \overline{\conv(A)}$. 
+	We now have our candidate state, defining $\omega=\omega_+/||\omega_+||$, we see that the distance from $\iota_\omega(x_0)$ to $C$ is at least $\sqrt{\epsilon/||\omega_+||}>0$. 
+\end{proof}
+Thus when looking at localizations closed convex subsets are in some sense locally complementable. This is exactly the tool needed for proving the Local-Global principle, as it almost enables us to use Hilbert space techniques if we just consider the operator piecewise. 
+
+\begin{theorem}[The Local-Global Principle]
+	For a closed densely defined and symmetric operator $T$ in a Hilbert $C^*$-module the following are equivalent
+	\begin{enumerate}
+		\item $T$ is self-adjoint and regular
+		\item For every representation $(\pi,H_{\pi})$ the localization $T^\pi$ is self-adjoint. 
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	Assume that $T$ is self-adjoint and regular, with $\pi$ a representation of $A$. Then it suffices to show that $T^\pi\pm i$ have dense range. Without loss of generality we may consider $T^\pi+i$. By density of the algebraic tensor product in $E\tens H_\pi$ it suffices to show that $x\tens h$ lies in the range of $T^\pi+i$. As $T$ is self-adjoint and regular, $T+i$ is surjective. Therefore we can define $y=(T+i)^{-1}x\in \D(T)$. Then $(T^\pi+i)(y\tens h)=x\tens h$. 
+	
+	Conversely, assume that all localizations are self-adjoint. For this direction we consider the state picture of representations, so we assume that $T^\omega$ is self-adjoint for every state $\omega$ on $A$. Furthermore, we assume for contradiction that $T+i$ does not have dense range. It follows by \Cref{closedrange} that $T$ has closed range. Then by \Cref{separationthmweak} it follows that there is a state $\omega$ such that 
+	\begin{align*}
+		\overline{\iota_\omega(\ran(T+i))}\neq E^\omega
+	\end{align*}
+	We also have the equalities
+	\begin{align*}
+		\overline{\iota_\omega(\ran(T+i))}=\overline{\ran(T_0^\omega+i)}=\ran(T^\omega+i)
+	\end{align*}
+	so $T^\omega+i$ does not have dense range, which contradicts $T^\omega$ being self-adjoint. Thus we have shown the desired. 
+\end{proof}
+\subsection{Sums of self-adjoint operators}
+In this section we wish to study the sum of two unbounded self-adjoint operators $S,T$ on Hilbert \Cstar module $E$, in the form of the operator 
+\begin{align*}
+\begin{pmatrix}
+	0 & S-iT \\
+	S+iT & 0
+\end{pmatrix}
+\end{align*}
+defined on $E\osum E$. 
+We shall follow the work of \cite{locglob} and use their standing assumption \cite[Assumption 7.1]{locglob}. This is as follows
+\begin{assumption}\label{standassump}
+	Assume that there is a dense submodule $\E\subset E$ along with two operators $S,T$  satisfying the following conditions for every $\mu \in \R$. 
+	\begin{enumerate}
+		\item
+			The submodule $\E$ is a core for $T$.
+		\item
+			The following inclusions hold
+			\begin{align*}
+				(S-i\mu)^{-1}(\xi)\in \D(S)\cap \D(T) ~ T(S-i\mu)^{-1}(\xi)\in \D(S)
+			\end{align*}
+		\item
+			The module homomorphism 
+			\begin{align*}
+				X_\mu=[S,T](S-i\mu)
+			\end{align*}
+			can be extended to a bounded linear operator $E\to E$.
+	\end{enumerate}
+\end{assumption}
+\begin{lemma}\label{strongconvsa}
+	Let $W$ be a self-adjoint regular operator on $E$. Let $(f_n)_{n\in\N}$ be a uniformly bounded sequence of functions, converging uniformly on compact subsets of $\R$ to $f$. 
+	Then $f_n(W)$ converges strongly to $f(W)$. 
+\end{lemma}
+\begin{proof}
+	Let $x\in \D(W)$. Define $\phi(t)=(t+i)^{-1}$, and $y=(W+i)x$. This gives the identity $x=\phi(W)y$, as the regularity of $W$ implies that the function is well-defined. As $\phi$ vanishes at infinity, $f_n\phi\to f$ uniformly, not just on compact subsets. Thus
+	\begin{align*}
+		f_n(W)x=((f_n\phi)(W))y\to f(W)x
+	\end{align*}
+	Therefore $f_n(W)$ converges strongly to $f(W)$ on a dense subset of $E$. As the sequence is uniformly bounded, we get strong convergence globally. 
+\end{proof}
+Proceeding, remark that $X_\mu$ is adjointable as the domain of $X_\mu$ includes the dense submodule $(S-i)^{-1}(\E)$. Thus we get
+\begin{align*}
+	X_\mu^*\xi=-(S+i\mu)^{-1}[S,T]\xi
+\end{align*}
+for every $\xi\in \D([S,T])$. We now show that we can concretely describe the core in \Cref{standassump}. 
+\begin{lemma}\label{locglob73}
+	The submodule $\D(T)$ fulfills the necessary criteria for a submodule in \Cref{standassump}, and thus we may replace $\E$ with the more concrete $\D(T)$. 
+\end{lemma}
+\begin{proof}
+	Fix $\xi\in \D(T)$, and $\mu \in \R\setminus \{0\}$. Then it suffices to show 
+	\begin{align*}
+		(S-i\mu)^{-1}\xi\in \D(T), \text{ and } T(S-i\mu)^{-1}\xi\in \D(S)
+	\end{align*}
+	Let $\xi_n\to \xi$ and $T\xi_n\to T\xi$ in norm. This implies that the following sequences converge by \Cref{standassump}
+	\begin{align*}
+		T(S-i\mu)^{-1}\xi_n=(S-i\mu)T\xi_n+(S-i\mu)^{-1}X_\mu\xi_n \\
+		ST(S-i\mu)^{-1}\xi_n=S(S-i\mu)^{-1}T\xi_n+S(S-i\mu)^{-1}X_\mu\xi_n
+	\end{align*}
+	in $E$. This implies the desired, as all operators are assumed closed. 
+\end{proof}
+Proceeding, we have a technical lemma which we shall be calling upon
+\begin{lemma}\label{convergestozero1}
+	The sequence
+	\begin{align*}
+		R_n=\frac{i}{n}\pa{\frac{i}{n}S+1}^{-1}[S,T]\pa{\frac{i}{n}S+1}^{-1}
+	\end{align*}
+	converges strongly to the zero operator. Furthermore, $R_n$ is adjointable and the adjoint converges to the zero operator as well.
+\end{lemma}
+\begin{proof}
+	Write $R_n$ in the form
+	\begin{align*}
+		R_n=\pa{\frac{i}{n}S+1}^{-1}X_{-1}(S+i)(S-in)^{-1} 
+	\end{align*}
+	Every factor is adjointable, so $R_n$ is adjointable. By \Cref{strongconvsa} $(S+i)(S-in)^{-1}$ converges strongly to 0. Further, $\pa{\frac{i}{n}S+1}^{-1}X_{-1}$ is a uniformly bounded sequence. This proves the desired, as the proof for the adjoint proceeds in an analogous fashion. 
+\end{proof}
+We have the following result on semi-boundedness of the commutator, in the Hilbert module sense. 
+\begin{lemma}\label{estimatelemma1}
+	The following inequality holds for some constant $C>0$. 
+	\begin{align*}
+		\pm i\ip{[S,T]\xi}{\xi}\leq \frac{1}{2}\ip{S\xi}{S\xi}+C\ip{\xi}{\xi}
+	\end{align*}
+\end{lemma}
+\begin{proof}
+	Taking $S,T$'s self-adjointness into account and \Cref{standassump} we see that the form $\ip{[S,T]\xi}{\xi}$ is skew-adjoint for every $\xi \in \D([S,T])$. Then the following inequalities show the result. 
+	\begin{align*}
+		2i\ip{[S,T]\xi}{\xi}&=-(\ip{i[S,T]\mu\xi}{\mu^{-1}\xi}+\ip{\mu^{-1}\xi}{i[S,T]\mu\xi} \\
+		&\leq \mu^2 \ip{[S,T]\xi}{[S,T]\xi}+\mu^{-2}\ip{\xi}{\xi} \\
+		&\leq \mu^2 ||[S,T](S+\mu i)^{-1}||^2\ip{(S+\mu i)\xi}{(S+\mu i)\xi}-\mu^{-2}\ip{\xi}{\xi} \\
+		&\leq \mu^2||X_{-1}||^2 \ip{S\xi}{S\xi}+(\mu^2(||X_{-1}+\mu^{-2}||)\ip{\xi}{\xi}
+	\end{align*}
+	Choosing $\mu=\frac{1}{||X_{-1}||}$ shows the desired.
+\end{proof}
+One should note that the previous result of course also holds for $-i$. 
+\begin{lemma}\label{estimatelemma2}
+	There is a constant $C>0$ such that we have the following inequality for every $\xi \in \D(S)\cap \D(T)$. 
+	\begin{align*}
+		\ip{(S\pm iT)\xi}{(S\pm iT)\xi}\geq \frac{1}{2}||S\xi||^2+||T\xi||^2-C||\xi||^2
+	\end{align*}
+\end{lemma}
+\begin{proof}
+	We start by showing the inequality on $\D([S,T])$. Here we can apply \Cref{estimatelemma1}. 
+	\begin{align*}
+		\ip{(S\pm iT)\xi}{(S\pm iT)\xi}&=\ip{S\xi}{S\xi}+\ip{T\xi}{T\xi}-\mp i\ip{[S,T]\xi}{\xi} \\
+		&\geq \frac{1}{2} ||S\xi||^2+||T\xi||^2-C||\xi||^2
+	\end{align*}
+	Consider $\xi\in \D(S)\cap \D(T)$. Define the sequence
+	\begin{align*}
+		\xi_n=\pa{\frac{i}{n}S+1}^{-1}\xi \in \D([S,T])
+	\end{align*}
+	We have the convergence $\xi_n\to \xi$ and $S\xi_n \to S\xi$ by \Cref{strongconvsa}. Therefore the only thing we still need to show is that $T\xi_n\to T\xi$. 
+	\begin{align*}
+		T\xi_n&=T\pa{\frac{i}{n}S+1}^{-1}\xi+\frac{i}{n}\pa{\frac{i}{n}S+1}^{-1}[S,T]\pa{\frac{i}{n}S+1}^{-1}\xi \\
+		&=\pa{\frac{i}{n}S+1}^{-1}T\xi+R_n\xi
+	\end{align*}
+	By the result in \Cref{convergestozero1} we get $T\xi_n\to T\xi$. Thus we get the desired. 
+\end{proof}
+We can now show the result that under our assumptions, the sum of two self-adjoint operators is again self-adjoint.
+\begin{theorem}\label{sumselfadjoint}
+	Assume we are in the situation in \Cref{standassump}. Then the operators $S\pm iT$ are closed with domains $\D(S\pm iT)=\D(S)\cap \D(T)$, and are each others adjoints. That is, the sum operator 
+	\begin{align*}
+		\begin{pmatrix}
+			0 & S-iT \\
+			S+iT & 0
+		\end{pmatrix}
+	\end{align*}
+	is self-adjoint with domain $\D(D)=(\D(S)\cap \D(T))^2$
+\end{theorem}
+\begin{proof}
+	By \Cref{estimatelemma2} we get that the convergence of a sequence in the graph norm of $S\pm iT$ is equivalent to the sequence converging in the graph norms stemming from both operators. Therefore closedness of $S,T$ gives closedness of $S\pm iT$. In order to show that $(S\pm iT)^*=S\mp iT$, we need only consider one inclusion, namely,
+	\begin{align*}
+		\D((S+iT)^*)\subset \D(S)\cap \D(T)
+	\end{align*}
+	To do this, consider an element $\xi \in \D((S+iT)^*)$. As done previously, consider the sequence
+	\begin{align*}
+		\xi_n=\pa{-\frac{i}{n}S+1}^{-1}\xi
+	\end{align*}
+	which will lie in $\D(S)$, and is norm-convergent to $\xi$. As all operators concerned are closed, we need only show that $\xi_n \in \D(S)\cap \D(T)$ and $(S\pm iT)^*\xi_n=(S\mp iT)\xi_n$ is convergent.
+	
+	To see $\xi_n\in \D(S)\cap \D(T)$, let $\eta\in \D(T)\cap \D(S)$. Then we can perform the following calculations
+	\begin{align*}
+		\ip{\xi_n}{T\eta}&=\ip{\pa{\frac{i}{n}S+1}^{-1}\xi}{T\eta} \\
+		&=\ip{\xi}{\pa{\frac{i}{n}S+1}^{-1}T\eta} \\
+		&=\ip{\xi}{T\pa{\frac{i}{n}S+1}^{-1}\eta}-\ip{\xi}{\frac{i}{n}\pa{\frac{i}{n}S+1}^{-1}[S,T]\pa{\frac{i}{n}S+1}^{-1}\eta} \\ 
+		&=-i\ip{\xi}{(S+iT)\pa{\frac{i}{n}S+1}^{-1}\eta}+i\ip{\xi}{S\pa{\frac{i}{n}S+1}^{-1}\eta}-\ip{R_n^*\xi}{\eta} \\
+		&=-i\ip{\pa{\frac{i}{n}S+1}^{-1}(S+iT)^*\xi}{\eta}+i\ip{S\xi_n}{\eta}-\ip{R_n^*\xi}{\eta}
+	\end{align*}
+	By self-adjointness of $T$ we may now conclude $\xi\in \D(T)$, as well as 
+	\begin{align*}
+		T\xi_n=i\pa{-\frac{i}{n}S+1}^{-1}(S+iT)^*\xi-iS\xi_n-R_n^*\xi
+	\end{align*}
+	Now we need only show that $(S-iT)\xi_n$ converges in $E$. By the expression for $T\xi_n$ we can see that
+	\begin{align*}
+		(S-iT)\xi_n=\pa{\frac{-i}{n}S+1}^{-1}(S-iT)\xi+iR_n^*\xi
+	\end{align*}
+	which converges in $E$ as $R_n^*$ converges strongly to 0. Thus $((S+iT)^*\xi_n)_{n\in \N}$ converges, and we have shown the desired result on $D$. 
+\end{proof}
+We now take a brief detour back to localizations, in order to get the last results out of the way before proving the main theorem of this subsection. 
+
+\begin{lemma}
+	The localizations of self-adjoint operators $S,T$ with respect to some state $\omega$ satisfy the assumptions of \Cref{standassump}. The core in question is $\E^\omega=\iota_\omega(\D(T))$. 
+\end{lemma}
+
+We can now show that the process of localization is linear. 
+\begin{lemma}
+	The localization of a sum is equal to the sum of the localizations. That is, 
+	\begin{align*}
+		S^\omega+iT^\omega=(S+iT)^\omega
+	\end{align*}
+	for any state $\omega$. 
+\end{lemma}
+\begin{proof}
+	By definition we have $\D(S^\omega+iT^\omega)=\D(S^\omega)\cap \D(T^\omega)$. The inclusion $(S+iT)^\omega\subset S^\omega+iT^\omega$  is immediate as $(S+iT)_0^\omega\subset S_0^\omega+iT_0^\omega$, and $S^\omega+iT^\omega$ is closed. To show the other inclusion, we start by showing that 
+\begin{align*}
+	(S^\omega+i\mu)^{-1}(\D(T^\omega))\subset \D((S+iT)^\omega)
+\end{align*}
+	Pick $\xi \in \D(T^\omega)$. Then there is a sequence $\eta_n\subset \D(T)$ such that $\iota_\omega(\eta_n)$ converges to $\xi$ and $\iota_{\omega}(T\eta_n)$ converges to $T^\omega(\xi)$. Applying \Cref{standassump} we get the following
+	\begin{align*}
+		(S^\omega+i\mu)^{-1}(\iota_\omega(\eta_n))=\iota_\omega((S+i\mu)^{-1}\eta_n)\in \iota_\omega(\D(S)\cap \D(T))\subset \D((S+iT)^\omega)
+	\end{align*}
+	By continuity we may infer that $(S^\omega+i\mu)(\iota_\omega(\eta_n))$ converges to $(S^\omega+i\mu)^{-1}\xi$. Thus it suffices to show that $(S+iT)^\omega(S^\omega+i\mu)^{-1}(\eta_n)$ converges in the norm of $E$, which may be done with an argument analogous to the one in \Cref{locglob73}. To finalize the proof of the inclusion, let $\xi\in \D(S^\omega+iT^\omega)$. Define the sequence $\xi_n=\pa{\frac{i}{n}S^\omega+1}^{-1}\xi$. As in \Cref{estimatelemma2} we have that $\xi_n$ converges to $\xi$, and $(S^\omega+iT^\omega)\xi_n$ converges to $(S^\omega+iT^\omega)\xi$ in $E^\omega$. This shows the desired, as $\xi_n\D((S+iT)^{\omega})$. 
+\end{proof}
+Drawing all our work together, we get can finally show that the sum of regular self-adjoint normal operators is once again self-adjoint. 
+\begin{theorem}\label{locglob71}
+	Assume all assumptions in \Cref{standassump} are satisfied. Then the sum operator 
+	\begin{align*}
+		D=\begin{pmatrix} 0 & S-iT \\ S+iT & 0\end{pmatrix}
+	\end{align*}
+is self-adjoint and regular.
+\end{theorem} 	
+\begin{proof}
+	Let $\omega$ be a state on $A$. By the Local-Global principle it suffices to show that the localization $D^\omega$ agrees with the operator 
+	\begin{align*}
+		(D^\omega)'=\begin{pmatrix} 0 & S^\omega-iT^\omega \\ S^\omega+iT^\omega & 0\end{pmatrix}, \D((D^\omega)')=(\D(S^\omega\cap \D(T^\omega)))^2
+	\end{align*}
+	We can see that $(D^\omega)'$ is self-adjoint by the results we have just shown, so we get 
+	\begin{align*}
+		D^\omega=\begin{pmatrix} 0 & (S-iT)^\omega \\ (S+iT)^\omega & 0 \end{pmatrix}=\begin{pmatrix} 0 & S^\omega-iT^\omega \\ S^\omega+iT^\omega & 0\end{pmatrix}
+	\end{align*}
+	which is exactly $(D^\omega)'$, as desired. 
+\end{proof}
+%There are two further applications of the Local-Global principle which are of interest to us, one of which leads to a great simplification of  proof of the essential lemma \cite[Lemma 15]{kucerovsky}, the other being the Hilbert module proof of the Kato-Rellich theorem. 

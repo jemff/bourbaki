@@ -1,0 +1,192 @@
+We briefly recall the notion of a Hilbert \Cstar module, which is a generalization of a Hilbert space with the complex field replaced by a \Cstar algebra $A$.
+\begin{definition}
+	For a \Cstar algebra $A$ and $E$ a right $A$-module, we say that $E$ is a (pre)- Hilbert $A$ module if $E$ is equipped with an $A$-valued inner product $\ip{\cdot}{\cdot}_A$, ie. a sesquilinear function $E\times E\to A$ satisfying the axioms below for $e_1,e_2\in E,a\in A$. 
+	\begin{align*}
+		\ip{x_1}{x_2a}&=\ip{x_1}{x_2}a & \\
+		\ip{x}{x}&\geq 0,\ip{x}{x}=0 \Lr x=0 \\
+		(\ip{x_1}{x_2})^*&=\ip{x_2}{x_1}
+	\end{align*}
+	We equip $E$ with the norm $\norm{x}=\sqrt{\norm{\ip{x}{x}}}$, and taking the completion of $E$ in this norm we may turn any pre-Hilbert module into a bona fide one. 
+\end{definition}
+To justify calling our construction an inner product, we show the Cauchy-Schwarz inequality holds in a Hilbert module
+\begin{lemma}
+	Given $x_1,x_2\in E$ where $E$ is a Hilbert $A$-module, we have the inequality 
+	\begin{align*}
+		\norm{\ip{x_1}{x_2}}\leq \norm{x_1} \norm{x_2}
+	\end{align*}
+\end{lemma}
+\begin{proof}
+	We consider the element $a=-\ip{x_2}{x_1}(\norm{x_2}_2)^{-2}$. We have positivity of the element 
+	\begin{align*}
+		&\ip{x_1+ax_2}{x_1+ax_2}\geq 0 \\
+		&\ip{x_1-\ip{x_2}{x_1}x_2||x_2||^{-2}}{x_1-\ip{x_2}{x_1}x_2\norm{x_2}^{-2}}\geq 0 \\
+		&\ip{x_1}{x_1}\geq \ip{x_1}{x_2}\ip{x_2}{x_1}\norm{x_2}^{-2}\\
+		&\ip{x_1}{x_2}\ip{x_2}{x_1}\leq \norm{x_2}^2 \ip{x_1}{x_1}
+	\end{align*}
+	giving the desired result by taking norms and square roots. 
+\end{proof}
+Replacing the set of bounded operators on a Hilbert space is the set of adjointables on a Hilbert module. We define the set of bounded operators $B(E,F)$ as usual, as the bounded $\C$ linear operators from $E\to F$, equipped with the operator norm. 
+\begin{definition}
+	For an $A$-hilbert module $E$ define the set $L(E,F)$ as the set of operators between two Hilbert modules $E,F$ which admit an adjoint, ie. the maps $T: E\to F$ such that there is an operator $S$ satisfying $\ip{Tx}{y}=\ip{x}{Sy}$. We denote $T^*=S$ in this case. 
+\end{definition}
+\begin{remark}
+	By a simple manipulation of the inner product it can be seen that this implies that $T\in L(E,F)$ is $A$-linear and bounded, so $L(E,F)\subset B(E,F)$.
+\end{remark}
+We wish to illustrate the analogy with the bounded linear operators on Hilbert space by the following result 
+\begin{lemma}
+	In the following $T\in L(E,F)$. We have $(T^*)^*=T$, and $\norm{T^*T}=\norm{T}^2=\norm{TT^*}$. We have $|Tx|^2\leq \norm{T}^2 |x|^2$, giving that the norm on $L(E)$ is a \Cstar norm, and that $L(E)$ acts analogously to $B(H)$. 
+\end{lemma}
+\begin{proof}
+	It is clear that $(T^*)^*=T$ by definition of the adjoint. 	To see $\norm{T^*T}=\norm{T}^2$, consider the following
+	\begin{align*}
+		\norm{T^*T}&\geq \sup\{\norm{\ip{T^*Tx}{x}},x\in E \} \\
+		&=\sup\{\ip{Tx}{Tx},x\in E\}=\norm{T}^2
+	\end{align*}
+	where $\norm{T^*T}\leq \norm{T^*}\norm{T}=\norm{T}^2$ is direct by $L(E,F)$ being a subset of the Banach algebra of bounded linear maps from $E$ to $F$. To see that the norm on $L(E)$ behaves like the operator norm consider the following calculation, where $\omega$ is a state on $A$. 
+	\begin{align*}
+		\omega(\ip{T^*Tx}{x})\leq \omega(\ip{T^*Tx}{T^*Tx})^{1/2}\omega(\ip{x}{x})^{1/2}=\omega(\ip{T^*Tx}{x})\omega(|x|^2)^{1/2}
+	\end{align*}
+	By induction, we get the estimate 
+	\begin{align*}
+		\omega(\ip{T^*Tx}{x})&\leq \omega(\ip{(T^*T)^{2^n}x}{x})^{2^{-n}}\omega(\ip{x}{x})^{\sum_{j=1}^n 2^{-j}} \\
+		&\leq (||x||^2)^{2^{-n}}||T^*T||\omega(|x|^2)^{1-2^{-n}}
+	\end{align*}
+	Letting $n\to \infty$, we get the desired estimate as states separate points. 
+\end{proof}
+It follows from the previous lemma that the set of adjointables $L(E)$ on a Hilbert module is a \Cstar algebra. 
+With the replacement of $B(H)$ in place, we can now replace the compacts with their proper analogue in the setting of Hilbert modules. 
+\begin{definition}
+	Given two Hilbert $A$ modules $E$ and $F$ define the rank one operators as $\theta_{x_1,x_2}$ via. $\theta_{x_1,x_2}(x)=x_1\ip{x_2}{x}$. We define the compacts $K(E)$ as the closure of the linear span of the finite rank operators. 
+\end{definition}
+The proof that the compacts constitute an ideal can be lifted word-for-word from the Hilbert space setting. 
+Given any \Cstar algebra $A$ we can view as a Hilbert module over itself, with the inner product $\ip{a_1}{a_2}=a_1^*a_2$. With this in hand, we can show the following proposition.
+\begin{proposition}
+	Viewing $A$ as a module over itself, we have the identity 
+	\begin{align*}
+		K(A)\cong A
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	It is sufficient to define a $^*$-morphism from the rank one-operators to $A$, and show that this must be surjective as well as an isometry. Define the $^*$-morphism $\Phi$, $\theta_{a,b}\mapsto ab^*$. If $(u_i)_{i\in \Lambda}$ is an approximate unit for $A$, we see that $\Phi(\theta_{a,u_i})$ converges to $a$ so $\Phi$ is surjective. As $\Phi$ is a $^*$-homomorphism it is contractive, and we have the inequality 
+	\begin{align*}
+		\norm{\theta_{a,b}c}\leq \norm{a^*b}\norm{c}
+	\end{align*}
+	showing that $\sup\{\norm{\theta_{a,b}c} \mid c\in A\}\leq \norm{a^*b}$, so $\Phi$ is an isometry. 
+\end{proof}
+ Before proceeding, we need to define the notion of degeneracy and an essential ideal. 
+\begin{definition}
+	An ideal $I\subset B$ is essential if $bI=0$ implies $b=0$. In conjunction with this, we say that a representation $\pi:A\to L(E)$ is non-degenerate if $\pi(A)E$ is dense in $E$. 
+\end{definition}
+We begin the work of identifying some properties of $L(E)$ and defining the multiplier algebra of a \Cstar algebra.
+\begin{proposition}\label{multiplier1}
+	Given a triple of \Cstar algebras $A,B,C$ with $A$ an ideal in $B$ and $E$ a Hilbert $C$-module. Assume that $\phi:A\to L(E)$ is a non-degenerate $^*$-homomorphism. Then $\phi$ extends uniquely to a $^*$-homomorphism $\overline{\phi}:B\to L(E)$. If $\phi$ is injective and $A$ is essential then $\overline{\phi}$ is injective. 
+\end{proposition}
+\begin{proof}
+	Let $(u_i)_{i\in \Lambda}$ be an approximate unit for $A$. For $b\in B,(a_i)_{i=1}^n \subset A$, and $(\xi)_{i=1}^n\subset E$ we may calculate as follows. 
+	\begin{align*}
+		\norm{\sum_{i=1}^n \phi(ba_i)\xi_i}&=\lim_{i}\norm{\sum_{i=1}^n\phi(bu_ja_i)\xi_i} \\
+		&\lim\norm{\phi(bu_j)\sum_{i=1}^n \phi(a_i)\xi_i} \\
+		&||b|| \norm{\phi(a_i)\xi_i}
+	\end{align*}
+	Therefore we may extend $\phi$ to a bounded map $\overline{\phi}:B\to E$ by continuity. It is easy to see $\overline{\phi}(b^*)$ is an adjoint of $\overline{\phi}(b)$, so $\overline{\phi}$ is a map to $L(E)$. Uniqueness follows by non-degeneracy of $\phi$, as they  must agree on finite sums. If $\phi$ is injective $\overline{\phi}$ has a kernel which does not intersect $A$, thus must be zero as $A$ is essential.  
+\end{proof}
+Based on these two propositions, we can define the multiplier algebra $M(A)$ of $A$, which is the maximal unital \Cstar algebra in which we may sensibly embed $A$ as an ideal. It is the noncommutative generalization of the Stone-Cech compactification, as $M(C_0(X))=C_b(X)=C(\beta X)$. 
+\begin{proposition}\label{multiplier2}
+	Let $A$ be a \Cstar algebra
+	\begin{enumerate}
+	\item
+	The algebra $L(A)$ is an essential extension of $K(A)$, maximal in the sense that if $K(A)$ is an essential ideal in any \Cstar algebra $C$ there is an injective $^*$-homomorphism from $C$ to $L(A)$ which restricts to the identity on $K(A)$. 
+	\item
+		If the \Cstar algebra $B$ is a maximal essential extension of $A$ in the above sense, then there is a $^*$-isomorphism from $B\to L(A)$ which restricts to the canonical map $A\to K(A)$ on $A$. 
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Assume that $A$ is an essential ideal in some \Cstar algebra $B$, which is maximal in the sense that if $A$ is essential in $C$ then there is a unique map $C\to B$ which is an extension of the identity map. As $A$ is essential in $L(A)$ we get that there is an injection $\psi: L(A)\to B$. By \Cref{multiplier1} the embedding $\phi:A\to L(A)$ also has an injective extension $\overline{\phi}:B\to L(A)$. Now applying \Cref{multiplier1} again we also have a unique extension of the identity map of $A$ as a map $L(A)\to L(A)$. The identity map is such an extension, and the map $\overline{\phi}\psi$ is also one. Thus by uniquness they agree, implying that $\psi$ is surjective and thereby an isomorphism.
+\end{proof}
+\begin{proposition}\label{multiplier3}
+	Let $A,B$ and be \Cstar algebras, and let $E$ be a Hilbert $B$-module. Then any injective non-degenerate $^*$-homomorphism $\phi$ $A:\to L(E)$ extends to an isomorphism of $M(A)$ and the idealiser $I_{\phi}$ of $\phi$, where the idealiser is defined as follows.
+	\begin{align*}
+		I_{\phi}=\{T\in L(E)| T\phi(A)\subset A,\alpha(A)T\subset \alpha(A)\}
+	\end{align*}
+\end{proposition}
+\begin{proof}
+	We see that $\phi(A)$ is an essential ideal in $I_{\phi}$ by the non-degeneracy of $\phi$. Therefore we need only show that $I_{\phi}$ is a maximal essential extension of $\phi(A)$, as we may apply \Cref{multiplier2} in that case. 
+	Let $A$ be an essential ideal in a \Cstar algebra $C$. By \Cref{multiplier1} we get that $\phi$ extends to an injective $^*$-homomorphism $\overline{\phi}:C\to L(E)$. As $A$ is an ideal in $C$, it follows that $\overline{\phi}(C)\subset I_{\phi}$. Therefore $I_{\phi}$ has the desired maximality property.  
+\end{proof}
+From the previous propositions we may infer the deep result that the multiplier of the compacts on a Hilbert module is exactly the set of adjointable operators. 
+\begin{proposition}
+	Given a Hilbert $A$-module $E$ we have the $^*-isomorphism$ $L(K(E))=L(E)$.  
+\end{proposition}
+\begin{proof}
+	The inclusion $K(E)\to L(E)$ is non-degenerate, and the idealiser of $K(E)$ is $L(E)$, as $K(E)$ is a closed two-sided ideal. We may apply \Cref{multiplier3} to extend the identity to a $^*$-isomorphism between $M(K(E))$ and $L(E)$. 
+\end{proof}
+Given a family of Hilbert modules it is natural to ask whether we may construct some Hilbert module in containing this family. This is what we now define. 
+\begin{definition}
+	Let $E_0=(E_i)_{i\in I}$ be a family of Hilbert $A$-modules. Then we define the inner product on $E_0$ as follows
+	\begin{align*}
+		\ip{\cdot}{\cdot}: E\times E\to A \\
+		\ip{(x_i)_{i\in I}}{(x_i)_{i\in I}}=\sum_{i\in I} \ip{x_i}{x_i}_A
+	\end{align*}
+	Then we may define the Hilbert module $E$ as the subset of elements in $E_0$ for which $\ip{x}{x}$ exists in $A$.
+	In the case of each $E_i=A$, and $I=\N$ we denote this construction by $H_A$. 
+\end{definition}
+\begin{remark}
+	We note that we may identify $H_A\cong H\tens_{ext} A$, where $H\tens_{ext} A$ is the algebraic tensor product completed in the norm stemming from $\ip{\xi_1\tens a_1}{\xi_1\tens a_2}=\ip{\xi_1}{\xi_2}a_1^*a_2$. 
+\end{remark}
+This leads to the natural definition of being countably generated
+\begin{definition}
+	A Hilbert $A$-module $E$ is said to be countably generated if there is a set $(x_n)_{n\in \N}$ such that $\spn\{x_n b : b\in B, x\in \{x_n\}_{n\in \N}\}$ is dense in $E$. We define finitely generated in the same fashion. 
+\end{definition}
+There is an important theorem by Kasparov characterizing the countably generated Hilbert $A$ modules in terms of $H_A$, corresponding to the result that every separable Hilbert space is isometrically isomorphic to $\ell^2(\N)$. 
+We have the following theorem 
+\begin{theorem}[Kasparov stabilization]\label{kasparovstabilization}
+	For a countably genereated Hilbert $B$ module $E$, we have an isomorphism of Hilbert modules, ie. a unitary in $L(E\osum H_B,H_B)$, such that $E\osum H_B\cong H_B$. 
+\end{theorem}
+\begin{proof}
+	The proof proceeds by defining a unitary $U: H_A\to E\osum H_A$. Assume that $B$ is unital. Let $x_n$ be the $n$'th standard basis vector for $H_B$, and let $(\eta_i)_{i\in \N}$ be a generating set for $E$ satisfying that the set $\{l\in \N : \eta_l=\eta_i\}$ is infinite for all $i$. Define an operator $T$ via. the formula 
+	\begin{align*}
+		T=\sum_{k=0}^\infty 2^{-k}\theta_{\ip{\eta_k}{2^{-k}x_k},x_k}
+	\end{align*}
+	In order to see that $T$ has dense range, fix some $k\in \N$. For any $l$ such that $\eta_k=\eta_l$ we have
+	\begin{align*}
+		T(x_k)&=2^{-k}\theta_{\ip{\eta_k}{2^{-k}x_k},x_k}(x_k)=2^{-l}\ip{\eta_k}{2^{-l}x_l}
+	\end{align*}
+	Considering $T(2^l x_l)=(\eta_l,x_k 2^{-l})$, we see that which goes to $(\eta_l,x_k 2^{-l})\to (\eta_l,0)$ for $l\to \infty$, so  $(\eta_l,0)\in \overline{T(H_B)}$. Furthermore, we have $2^l(\ip{\eta_k}{2^{-l}x_l})-(\eta_k,0)=(0,x_l)$. Thus we get density by linearity. 
+	We wish to show that $T^*T$ has dense range. To see this, start by recalling that $(\theta_{e,f})^*=\theta_{f,e}$. Consider the following calculations
+	\begin{align*}
+		T^*T&=\sum_{k,l\in \N} 2^{-(k+l)}\theta_{x_k(\ip{\eta_k}{\eta_l}+\ip{2^{-k}x_k}{2^{-l}x_l}),x_l} \\
+		&=\sum_{k\in \N}4^{-2k}\theta_{x_k,x_k}+\pa{\sum_{k\in \N}2^{-k}\theta_{(\eta_k,0),x_k}}^*\pa{\sum_{k\in \N}2^{-k}\theta_{(\eta_k,0),x_k}} \\
+		&\geq \sum_{k\in \N}4^{-2k}\theta_{x_k,x_k}
+	\end{align*}
+	As the final term is positive with dense range and compact, we may infer that $T^*T>0$ with dense range. Thus defining $V$ by the equation $T(x)=V|T|(x)$, we get that $V$ must be a unitary as $|T|$ has dense range, the range being a superset of the range of $T^*T$.
+	Now assume that $A$ is not unital, and consider the unitilization $A^+$. Then we may regard $E$ as an $A^+$-module, and consider $\overline{H_{A^+}A}$ and $H_A$, these are unitarily equivalent by the map $(\xi\tens 1)\mapsto \xi\tens a$, where we view $H_A$ as the external tensor product $H\tens_{ext} A$. Likewise we get 
+	\begin{align*}
+		\pa{(E\osum H_{A^+}A)A}\cong E\osum H_A
+	\end{align*}
+	Thus we get that the theorem also holds by restricting the unitary for the unitilization to $\overline{H_{A^+}A}$ and composing with the unitary equivalences above. 
+\end{proof}
+An important use of this theorem is the following result.
+\begin{proposition}
+	A Hilbert $A$-module $E$ is countably generated if and only if $K(E)$ is a $\sigma$-unital \Cstar-algebra. 
+\end{proposition}
+\begin{proof}
+	As in the proof of Kasparov stabilization, assume that $A$ is unital and thus $H_A$ is generated by $e_n=\xi_n\tens 1$. Then we may define the strictly positive element $h=\sum_{n\in \N} 2^{-n}\theta_{e_n,e_n}$ of $K(H_A)$, and thus $K(H_A)$ will be $\sigma$-unital. We have that $E$ is a complemented submodule of $H_A$ by Kasparov stabilization, so we get an approximate unit of $K(E)$ by $pu_np$, where $u_n$ is a countable approximate unit for $K(H_A)$. 
+	Assume that $K(E)$ is $\sigma$-unital with a countable approximate unit $v_n$. We can construct a countable generating set of $E$ as follows:
+	As $K(E)$ is the closure of the finite rank operators we may approximate $v_n$ as follows
+	\begin{align*}
+		\norm{\sum_{i=1}^{m_n} \theta_{x_{n,i},y_{n,i}}-v_n}<\frac{1}{n}
+	\end{align*}
+	For all $x\in E$ we have $v_nx\to x$, implying that we may find $n$ such that the following inequality is satisfied for every $\epsilon$. 
+	\begin{align*}
+		\norm{\sum_{i=1}^{m_n} \theta_{x_{n,i},y_{n_i}}x-x}<\epsilon
+	\end{align*}
+	Unravelling the definition we see $ \theta_{x_{n,i},y_{n_i}}x=x_{n,i}\ip{y_{n,i}}{x}$, implying that elements of the form $x_{n,i}\ip{y_{n,i}}{x}$ are a dense subset, so the set $\{x_{n,i}| 1\leq i \leq m_n,n\geq 1\}$ generates $E$. 
+\end{proof}
+ Once one has two vector spaces, it is hard to resist the urge to tensor them, and for that purpose we have the following definition, which turns out to be the natural definition of the tensor product of Hilbert \Cstar modules in the context of Kasparov theory, though it may look rather clunky at first sight. 
+ \begin{definition}
+	Let $A,B$ be \Cstar algebras, and let $E_A,E_B$ be a $A$ and $B$-Hilbert modules respectively. Further, assume that we have a representation $\pi: A\to L(E)$. Then we may define the interior tensor product $E_A\tens_\pi E_B$ as the completion of the algebraic tensor product with respect to the norm coming from the following inner product. 
+	\begin{align*}
+		\ip{a_1\tens b_1}{a_2\tens b_2}=\ip{b_1}{\pi(\ip{a_1}{x_2}_A) b_2}
+	\end{align*}
+	we shall most often suppress $\pi$. Often we will write $\tens_A$ instead of $\pi$ when the representation is unambigious. 
+\end{definition}

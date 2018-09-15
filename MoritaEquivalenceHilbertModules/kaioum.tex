@@ -1,0 +1,525 @@
+\subsection{Real continuous trace algebras}
+\begin{comment}
+Add 8 different graded elementary algebras stemming from clifford classification!
+
+Fiks local isomorphism i proposition 5.15 kopien! det er lokalt isomorft til C_0(Cliff_{0,n})!
+
+CLIFFORD ALGEBRAER ER OGS{ ESSENTIELLE I CONTINUOUS TRACE!!!!
+\end{comment}
+
+
+In this section we study a class of specific Real \Cstar-algebras which are completely classified up to Morita equivalence, and present one of the ways in which local arguments are instrumental in the study of operator algebras. We start by defining the continuous trace algebras.
+\begin{definition}
+	Suppose $B$ is a complex \Cstar-algebra.
+	$B$ has continuous trace if for every irreducible representation $\pi$ there is a dense subset $W$ of the positive elements of $B$ such that:
+	\begin{align*} 
+	Tr(\pi(b))<\infty, \quad \forall b \in W.
+	\end{align*}
+	A Real \Cstar-algebra has continuous trace if it has continuous trace as a complex \Cstar algebra. In this section we shall be considering Real \Cstar algebras as equipped with an antilinear $^*$-automorphism, as in \Cref{equivalent}. 
+\end{definition}
+\begin{remark}\label{separable}
+	If $A$ is separable Real graded continuous trace algebra then the primitive ideal space $(\hat{A},\theta_*)$, see \Cref{involution}, is a locally compact Real Hausdorff space when equipped with the Jacobson topology. For a proof, see \cite[Chapter 5]{raeburncont}.
+\end{remark}
+\begin{remark}
+	In an abuse of notation we shall write $C_0(A,\tau)$ for $C_0(A,\tau)\tens \C$ equipped with the involution from \Cref{equivalent} in this section. Whether we are in the Real or real category will be clear from the context.
+\end{remark}
+
+
+We shall be requiring continuous fields of Banach spaces in the study of continuous trace \Cstar-algebras, as it turns out that continuous trace algebras are section algebras in a natural fashion. 
+\begin{definition}\label{bundledef}
+	Let $(T,\tau)$ be a Real space. A field of Real graded Banach spaces over $(T,\tau)$ is a topological space $\mathfrak{A}=\coprod_{t\in T} A_t$ equipped with an involution $\sigma:\mathfrak{A}\to\mathfrak{A}$, and a continuous Real open map $p:\mathfrak{A}\to T$ where $p(A_t)=t$. The set $(A_t)_{t\in T}$ is a family of Real graded Banach spaces with gradings $\gamma_t$. We denote binary operations defined on every fiber $t$, i.e. $A_t\times A_t \to A_t$, by $\mathfrak{A} \times_T \mathfrak{A}\to \mathfrak{A}$. Denote the diagonal mapping $T\to T\times T$ as $\Delta$. The space $\mathfrak{A}\times_T \mathfrak{A}=((p\times p)(\Delta(T)))^{-1}$ is closed as $T$ is Hausdorff, and equipped with the subspace topology.
+
+
+	The space $\mathfrak{A}$ is a continuous field of Real graded Banach spaces if it satisfies the following conditions:
+	\begin{enumerate}
+	\item
+		The topology on $A_t$ induced by the projection from $\mathfrak{A}$ is the norm topology.
+	%\item
+	%	The projection $p:\mathfrak{A}\to T$ is Real, continuous and open. 
+	\item
+		The map $\mathfrak{A}\to \R$, given as $a\mapsto \norm{a}$ is continuous, and $\norm{\sigma(a)}=\norm{a}$. 
+	\item
+		The map $(a,b)\mapsto a+b$ is continuous from $\mathfrak{A}\times_T \mathfrak{A}\to \mathfrak{A}$. 
+	\item
+		The induced bijection $\sigma_t:A_t\to A_{\tau(t)}$ is an anti-linear isomorphism of graded Banach spaces for every $t\in T$. The relation with the grading $\gamma_x$ is $\sigma(\gamma_x)=\gamma_{\tau(x)}(\sigma_x)$.  
+	\item
+		The scalar multiplication $\C \times \mathfrak{A}\to \mathfrak{A}$ is continuous. 
+	\item
+		If $a_i\subset \mathfrak{A}$ is a net satisfying 
+		\begin{align*}
+			&\norm{a_i}\to 0\\
+			&p(a_i)\to t
+		\end{align*}
+		then $a_i\to 0_t$, where $0_t$ is the zero element in $A_t$. 
+	\end{enumerate}
+\end{definition}
+In case that $A_t$ is a Hilbert space for every $t$, we require additional structure in order to make sure that our Hilbert spaces are Real. 
+\begin{definition}
+	A Real graded Hilbert bundle is a Real graded Banach bundle in which every fibre is a a graded Real Hilbert space, see \Cref{realhilbertspace} where the inner product satisfies 
+	\begin{align*}
+		\ip{\sigma_t(\xi)}{\sigma_t(\eta)}=\overline{\ip{\eta}{\xi}}
+	\end{align*}
+\end{definition}
+As for Hilbert spaces, when all fibers are \Cstar algebras we need to restrict the structure on the \Cstar algebras we allow.
+\begin{definition}[Bundles of Real algebras]
+	 A real graded bundle of \Cstar-algebras over $(T,\tau)$ is a real graded Banach bundle such that each fiber is a graded \Cstar-algebra such that: 
+	 \begin{enumerate}
+	 \item
+		The map $\sigma$ is multiplicative on $\mathfrak{A}\times_T \mathfrak{A}$. 
+	 \item
+		$\sigma_t(a^*)=\sigma_t(a)^*$.
+	 \item
+		The map $(a,b)\mapsto ab$ is continuous as a map $\mathfrak{A}\times_T \mathfrak{A}\to \mathfrak{A}$. 
+	 \end{enumerate}
+\end{definition}
+The reason for introducing bundles is to study an algebra through its local structure. In order to do this we want to be able write it locally as a Cartesian product of a topological space with a well-studied algebra. To do this in a consistent fashion, we introduce the concept of local triviality. 
+\begin{definition}
+	Let $(T,\tau)$ be a Real space. 
+	Let $\mathfrak{A}$ be a Real graded Hilbert or \Cstar bundle. The bundle is locally trivial if either:
+	\begin{enumerate}
+	\item 
+	\begin{enumerate}
+	\item 
+		For every $t\in T$  there is an open neighborhood and a homeomorphism $h:p^{-1}(U)\to U\times A$ where $A$ is a Real graded Hilbert space or \Cstar-algebra. This defines an open cover $\mathcal{U}$ of $T$.
+	\item 
+		$\mathcal{U}$ should satisfy that $U\in \mathcal{U}$ implies $\tau(U)=U$.
+	%\item
+	%	The local trivialization should be invariant under $\tau$, i.e. $p^{-1}(\tau(U))\cong U \times A$.
+	\end{enumerate}
+	\item
+	There is an open cover $(U_i)_{i\in I}$ of $T$ with the involution $\overline{\cdot}$ on $I$ and a system of homeomorphisms $(h_i)_{i\in I}$  such that: 
+	\begin{align*}
+		\xymatrix{
+			p^{-1}(U_i)\ar[r]^{h_i} \ar[d]^{\tau|_{U_i}} & U_i\times A \ar[d]_{\tau \times \sigma} \\
+			p^{-1}(U_{\overline{i}})\ar[r]^{h_{\overline{i}}} & U_{\overline{i}}\times A
+		}
+	\end{align*}
+	commutes, where we recall that $\sigma_t:A_t\to A_t$. 
+	\end{enumerate}
+	Such a cover is a \textbf{Real cover}. 
+\end{definition}
+\begin{remark}
+	The second definition gives a method of taking local trivializations in the complex case and transferring them to the Real case. Given a local trivialization of Real graded Hilbert or \Cstar bundle, determined by $(U_i)_{i\in I}$, define the family of sets $\mathcal{U}'$ by $(U_i')_{i\in I}=(\tau(U_i))_{i\in I}$. Define the new cover $\mathcal{U}''=\mathcal{U}\cup\mathcal{U}'$, with index set $I\times \{-1,1\}$ we can define the involution by $U_{i,j}\mapsto U_{i,-j}$. By the consistency requirement on $\tau$ and $\sigma$ in \Cref{bundledef} this becomes a Real local trivialization. Henceforth all covers will be assumed real. 
+\end{remark}
+\begin{definition}
+\begin{enumerate}
+	\item
+		Suppose $(T,\tau)$ is a Real space, and $(B,\sigma)$ is a Real graded \Cstar algebra. Define $A=(C_0(T,B),\sigma)$, where  
+		\begin{align*}
+			\sigma_A(s)(x)=\sigma_B(s(\tau(x)))
+		\end{align*}
+		In an abuse of notation we will write $C_0(T,B)$ for this space, letting the involution be implicit. 
+	\item
+		Assume that $\mathfrak{A}$ is a locally trivial bundle of Real graded \Cstar algebras over $(T,\tau)$. Define the section algebra as:
+		\begin{align*}
+			\Gamma_0(\mathfrak{A})=\{s\in C_0((T,\tau),\mathfrak{A}) | p(s(t))=t\}
+		\end{align*}
+		The algebra $\Gamma_0(\mathfrak{A})$ is a Real graded \Cstar bundle with involution given by 
+		\begin{align*}
+			\sigma_{\Gamma_0}(t)=\sigma_{A(\tau(t))}(s(\tau(x)))
+		\end{align*}
+\end{enumerate}
+\end{definition}
+As of yet we have not shown any parts of our claim that the theory we have defined is relevant for the study of continuous trace algebras, but we shall remedy that. We show a string of lemmas showing how we may view \Cstar-algebras with Hausdorff spectrum $\hat{A}$ as section algebras.
+\begin{lemma}
+	Let $A$ be a Real graded continuous trace algebra with spectrum $T$, and let be $P_t$ the primitive ideal corresponding to $t\in T$. Then the quotient $A(t)=A/P_t$ is a simple \Cstar-algebra with a unique irreducible representation up to unitary equivalence. 
+\end{lemma}
+\begin{proof}
+	If there is a proper ideal in $A/P_t$, there is a proper primitive ideal in $\tilde{Q}$ in $A/P_t$. Denote the preimage of this under the quotient map as $Q$. This will be a primitive ideal in $A$ containing $P_t$. Letting $J$ be a primitive ideal, $J\nsubseteq Q$ implies $J\nsubseteq P_t$ so the ideal $P_t$ lies in every open set containing $Q$. As $Q$ and $P_t$ are different, this contradicts that $\hat{A}$ is Hausdorff. Thus $A/P_t$ must be simple. 
+	To see that $A(t)$ has a representation which is unique up to unitary equivalence, let $\pi:A(t)\to H$ and $\tilde{\pi}:A\to H$ be irreducible representations and hence isometric isomorphisms by simplicity. By assumption the set of operators with finite trace is dense in the positive operators in $\pi(A(t))$ and $\tilde{\pi}(A(t))$. This implies that $\pi(A(t))\cong K(H)$, and likewise $\tilde{\pi}(A(t))\cong K(H)$. As both maps are isometric isomorphisms, we get an isometric isomorphism $\phi:\pi(A(t))\to \pi(A(t))$. This map is implemented by unitary conjugation since $\phi \in Aut(K(H))$ and $Aut(K(H))=Ad(U)$.
+\end{proof}
+\noindent This allows us to write $a(t)$ for the image of an element  $A(t)=A/P_t$ and thereby think of an element $a\in A$ as a section and $a(t)$ as the value of $a$ in $t$. 
+For $a\in A$ we can define $a(t)$ as the image of $a$ under the quotient map $A\to A/P_t$. Thus we can think of an element $a$ in $A$ as a section over $T$, with value $a(t)$ in $T$.  
+
+
+\begin{lemma}\label{raeburnlemmaX}
+	Assume that $A$ is a Real graded continuous trace \Cstar algebra with spectrum $(T,\tau)$. If $a(t)=b(t)$ for all $t$ then $a=b$. For each $a$ the function $t\mapsto \norm{a(t)}$ is continuous on $T$, vanishes at infinity and has norm equal to $\norm{a}$. 
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}
+	\item
+		We remark $a(t)=b(t)$ for all $t$ implies that $a-b$ lies in every primitive ideal, and thereby vanishes. 
+	\item
+		It is a standard result, see eg. \cite[Lemma A.30]{raeburncont}, for all $a\in A$ and $k\geq 0$ the set
+		\begin{align*}
+			\{\pi\in \hat{A} : \norm{\pi(a)} \geq k\}
+		\end{align*}
+		is compact and closed. This implies that $\{t: k\leq \norm{a(t)}\leq l\}$ is closed, and thus $t\mapsto \norm{a(t)}$ is continuous. It will vanish at infinity by a general result, see eg. \cite[Lemma A.30(b)]{raeburncont}. Picking a representation which is isometric on $a$, we get ${\norm{\pi(a)}=\norm{a}}$. 
+	\end{enumerate}
+\end{proof}
+Another proposition which we shall utilize is the following
+\begin{proposition}\label{raeburn53} 
+	Assume that $A$ is a Real graded continuous trace algebra with spectrum $(T,\tau)$ and $B$ is a \Cstar $C_0((T,\tau))$-submodule such that $\{b(t):b\in B\}$ is dense in $A(t)$ for all $t$. Then $B$ is dense in $A$.
+\end{proposition}
+For a proof, see \cite[Lemma 5.3]{raeburncont}. 
+Thus sections separate points, and we only need one result more to finalize the viewpoint of algebras with Hausdorff spectrum as section algebras. 
+\begin{lemma}\label{partition}
+	Let $A$ be a Real graded \Cstar-algebra with Real spectrum $(T,\tau)$ and we have a Real locally finite cover $(U_i)_{i\in I}$ of $T$ consisting of relatively compact open sets $U_i$ with partition of unity $\rho_i$ subordinate to $U_i$.  Suppose that $(a_i)\subset A$ is a family parametrized by $I$, and in addition that there is a function $f\in C_0(T)$ such that $\norm{a_i(t)}\leq f(t)$ for all $t$ and $i$. Then there is a unique element $a\in A$ such that $a(t)=\sum_{i\in I} \rho_i(t)a_i(t)$, we can write $a$ as: 
+	\begin{align*}
+		a=\sum_{i\in I} \rho_i\cdot a_i
+	\end{align*}
+\end{lemma}
+\begin{proof}
+	For every $n\in \N$, define the set $C_n=\{t:f(t)\geq \frac{1}{n}\}$. Define the increasing sequence of finite sets $F_n=\{i:C_n\cap U_i\neq \emptyset\}$. Define $b_n=\sum_{i\in \F_n} \rho_i a_i$, and note that $\rho_i|_{C_n}=0$ for $i\nin F_n$, giving $b_n(t)=b_m(t)$ for all $t\in C_n$ and $n\leq m$. Hence:
+	\begin{align*}
+		\norm{b_m-b_n}=\sup_{t\in T}\norm{b_m(t)-b_n(t)}=\sup_{t\nin C_n}\norm{b_m(t)-b_n(t)}
+	\end{align*}
+	However for $t\nin C_n$ we get
+	\begin{align*}	
+		\norm{b_m(t)-b_n(t)}=\norm{\sum_{i\in F_m\setminus F_n} \rho_i(t)a_i(t)}\leq \sum_{i\in F_m\setminus F_n} \rho_i(t)f(t) <\frac{1}{n}
+	\end{align*}
+	Thus $b_n$ is Cauchy and converges to some $a$. If $t\in C_n$ for some $n$, then ${a(t)=b_n(t)=\sum_{i\in I} \rho_i a_i(t)}$. If $t\nin C_n$ for all $n$, then $\norm{a_i(t)}=0$, giving $b_n(t)=0$ for all $n$ and $a(t)=0$. Uniqueness follows since $a(t)=b(t)$ for all $t$ implies that $a=b$ by \Cref{raeburnlemmaX}.
+\end{proof}
+\begin{comment}
+We still need to see that the picture of Real graded continuous trace algebras as section algebras preserves the Real structure.
+\begin{corollary}
+	Given a Real graded Banach bundle $\mathfrak{A}$ over a Real space $(T,\tau)$, sections fixed under the involution $\sigma$ on $\mathfrak{A}$ always exist. 
+\end{corollary}
+\begin{proof}
+	Pick $t\in T$ and $a\in A(t)$. By \cref{raeburnlemmaX}  there is a section such that $s(t)=a$. For every $t\in T$ the elements $s(t)$ and $\sigma_{\tau(t)}(s(\tau(t))$ belong to $A_t$, so the map $\tilde{s}=\frac{1}{2}(s+\sigma(s))$ is a well-defined section, invariant under $\sigma$. 
+\end{proof}
+\end{comment}
+\begin{remark}
+	For a real graded \Cstar bundle $(\mathfrak{A},\sigma)$ over $(T,\tau)$, the space $\Gamma_0(T,\mathfrak{A})$ is a Real graded \Cstar algebra with respect to the pointwise operations. The algebra $C_0(T,\tau)$ is in the center of $\Gamma_0(T,\mathfrak{A})$.  
+\end{remark}
+\begin{definition}
+	Define $\Zred=\Z\setminus \{0\}$, and define $H_\R=\ell^2(\Zred,\R)$ with grading $\gamma(x_i)_{i\in \Zred}=\sign(i)(x_i)_{i\in \Zred}$. Define the real algebra $\K=\K(H_\R)$. In an abuse of notation, we shall also use $\K$ to denote the Real algebra $(\K(H_\R)\tens \C,\sigma)$ where $\sigma$ is as in \Cref{equivalent}. 
+\end{definition}
+\textbf{From now on we use the convention $H=H_\R$}
+\begin{definition}
+\begin{enumerate}
+\item
+	Let $A$ and $B$ be real graded \Cstar-algebras. $A$ and $B$ are stably isomorphic if $A\tens \K\cong B\tens \K$. 
+\item
+	Let $(A,\sigma)$ and $(B,\sigma)$ be Real graded algebras. $A$ and $B$ are stably isomorphic if $A\tens \K\cong B\tens \K$. 
+	\end{enumerate}
+\end{definition}
+\begin{definition}
+	A Real graded \Cstar-algebra is elementary if it is isomorphic to the stabilization of $(Cl_{0,n},\sigma)$, with involution from \Cref{equivalent}. 
+\end{definition}
+\begin{remark}
+	By the classification of Clifford algebras, there are eight stable isomorphism classes of elementary algebras.  
+\end{remark}
+\begin{definition}
+	A Real graded locally trivial \Cstar bundle $\mathfrak{A}$ over $(T,\tau)$ is elementary if every fibre $A_t$ is isomorphic to an elementary \Cstar-algebra. 
+\end{definition}
+\noindent In analogy with the usual definition for \Cstar-algebras, we have the specific notion of Real graded bundles of imprimitivity modules. 
+\begin{definition}
+	Let $A$ and $B$ be Real graded \Cstar bundles over the Real space $(T,\tau)$. Then a Real graded Banach bundle $X$ over $(T,\tau)$ is a Real graded imprimitivity bimodule if:
+\begin{enumerate}
+\item 
+	Each fibre is a full left Hilbert $A$-module and a full right Hilbert $B$-module, satisfying:
+\begin{align*}
+	\norm{{}_A\ip{x}{x}(t)}&=\norm{\ip{x}{x}_B(t)}\quad \for x\in X \\
+	\ip{\eta}{\xi}_A\nu&=\eta {}_B\ip{\xi}{\nu}
+\end{align*}
+	\item
+		The natural maps
+	\begin{align*}
+		&(A\times_T X,\sigma_A\times \sigma_t)\to (X,\sigma_t) \\
+		&(a,\xi)\mapsto a\xi, \\
+		&(B\times_T X,\sigma_B\times \sigma_t)\to (X,\sigma_t) \\
+		&(b,\xi)\mapsto \xi b
+	\end{align*}
+	are Real and continuous.
+\item
+	The inner product on $X$ must intertwine the involutions:
+	\begin{align*}
+		(\sigma_A)_t(_{A_t}\ip{\xi}{\eta})&=(_{A_{\tau(t)}}\ip{(\sigma_X)_t(\xi)}{(\sigma_X)_t(\eta)}) \\
+		(\sigma_B)_t(\ip{\xi}{\eta}_{B_t})&=\ip{(\sigma_X)_t(\xi)}{(\sigma_X)_t(\xi)}_{B_{\tau(t)}}
+	\end{align*}
+\end{enumerate}
+	If such a bimodule exists, $A$ and $B$ are said to be strongly Morita equivalent. We shall denote such a bimodule as an $A-_T B$ imprimitivity bimodule.
+\end{definition}
+\noindent We have an immediate example of such a module, showing that $B=C_0(T,\tau)$ and $A=C_0(T,\K)$ are Morita equivalent. 
+\begin{example}
+	Consider the space $X=C_0(T,H)$ where $H=(H_\R\tens \C,\C)$. Equip $X$ with the inner products 
+	\begin{align*}
+		\ip{x}{y}_{C_0(T,Cl_{0,0}),\sigma)}(t)=\ip{x(t)}{y(t)} \\
+		{}_{C_0(T,\K)}\ip{x}{y}(t)=\ket{x(t)}\bra{y(t)}
+	\end{align*}
+	We wish to show that $X$ is a $C_0(T,\tau)-_T C_0(T,\K)$ imprimitivity module.
+	It is a standard result that this is a fiber-wise imprimitivity bimodule, \cite[Chapter 3]{raeburncont} and \cite[Lemma 2.17]{moutou}. We start by checking the real forms are intertwined by the inner product as desired. We only check the left-inner product as the calculations for the right inner product are analogous. 
+	
+	Let $\xi,\eta \in X,\xi=\xi_1\tens i\xi_2,\eta=\eta_1\tens i\eta_2$.
+	\begin{align*}
+		\sigma_{\C}(\ip{\xi}{\eta}(t))&={}_{C_0(T,\tau)}\ip{\xi_1}{\eta_1}(t)+\ip{\xi_2}{\eta_2}(t)+i(\ip{\xi_2}{\eta_1}(t)-\ip{\xi_1}{\eta_1}(t)) \\
+		&=\ip{\xi_1}{\eta_1}(t)+\ip{\xi_2}{\eta_2}(t)-i(\ip{\xi_2}{\eta_1}(t)-\ip{\xi_1}{\eta_1}(t)) \\
+		&=\ip{\xi_1(\tau(\cdot))-i\xi_2(\tau(\cdot ))}{\eta_1(\tau(\cdot))-i\eta_2(\tau(\cdot))}(\tau(t)) \\
+		&={}_{C_0(T,\tau)}\ip{(\sigma_X)_{\tau(\cdot)}(\xi_1+i\xi_2)}{(\sigma_X)_{\tau(\cdot)}(\eta_1+i\eta_2)}(\tau(t))
+	\end{align*}
+	That the Right action is Real is clear, so we only check continuity of the right-action:
+	\begin{align*}
+		&\norm{\eta(t) \sum_{i=1}^m \ket{y_i}\bra{x_i})(t)} \\ 
+		&\leq \norm{\eta(t)}\sup_{t\in T}\norm{\sum_{i=1}^m \ket{y_i}\bra{x_i}(t)} \\
+		&\leq \norm{\eta(t)}C
+	\end{align*}
+	Thus the right-action by the compacts is continuous, and the left action is treated in an analogous fashion. 
+\end{example}
+To be able to prove results about a Real graded \Cstar algebra locally, we need an algebraic process for localization. This is again a place where the interplay of $T$ as a representation space and a space over which $A$ is a section algebra bears fruit. 
+\begin{definition}
+	We define the localization of a \Cstar-algebra with Hausdorff spectrum $T$ in the compact set $F$ as $A^F=A/I_F$, where $I_F=\overline{\{a:\in A | a(t)=0,t\nin F\}}$. 
+\end{definition}
+This allows us to state the proposition providing the link between locally trivial elementary \Cstar bundles and continuous trace algebras together with \Cref{separable}. 
+\begin{proposition}
+	A Real graded \Cstar-algebra $A$ with Hausdorff spectrum $T$ has continuous trace if and only if $A$ is locally Morita equivalent to $C_0(T,(Cl_{0,n},\sigma))$, ie. for every $t\in T$ there is a $\tau$-invariant compact neighborhood $F$ such that $A^{F}$ is Morita equivalent to $C(F,(Cl_{0,n},\sigma))$. 
+\end{proposition}
+\begin{proof}
+	The result follows by an adaption of the proof of \cite[Proposition 5.15]{raeburncont}.  
+\end{proof}
+\begin{remark}
+	Given a locally trivial Real graded bundle of algebras $\mathfrak{A}$ over $(T,\tau)$ which are locally Morita equivalent to $C_0(T,(Cl_{0,n}))$, define $A=\Gamma_0(T,\mathfrak{A})$. This is a Real continuous trace algebra, and by the preceding proposition every Real graded continuous trace algebra arises in this fashion. 
+\end{remark}
+From hereon we shall work purely from the bundle theoretic viewpoint, which presents some technical challenges but in the end will enable the classification of continuous trace algebras. 
+\begin{lemma}\label{density}
+	Let $\mathfrak{A}$ and $\mathfrak{B}$ be Real graded elementary \Cstar-bundles over a space $(T,\tau)$. Then there is a unique elementary Real graded \Cstar-bundle over $T\times T$ with fibre $A_{t_0}\tens B_{t_1}$ over $(t_0,t_1)\in T\times T$ with real structure given by coordinate-wise transforms. This bundle, denoted $\mathfrak{A}\tens \mathfrak{B}$, satisfies: for all $f\in \Gamma_0(\mathfrak{A})$ and $g\in \Gamma_0(\mathfrak{B})$, $f\tens g$ is a section of $\mathfrak{A}\tens \mathfrak{B}$, and sections on this form span a dense subset. 
+\end{lemma}
+For a proof of this see \cite{moutou} and \cite[Chapter 5]{raeburncont}. 
+\begin{definition}
+	Assume $A=\Gamma_0(\mathfrak{A})$ and $B=\Gamma_0(\mathfrak{B})$ are continuous trace algebras. Define a Real graded \Cstar bundle $\mathfrak{A}\tens_T \mathfrak{B}$ over the space $(T,\tau)$, by restricting $\mathfrak{A}\tens \mathfrak{B}$ to the diagonal of $T\times T$ with the coordinate-wise involutions.   
+\end{definition}
+\begin{definition}
+	Assume $A=\Gamma_0(\mathfrak{A})$ and $B=\Gamma_0(\mathfrak{B})$ are continuous trace algebras.	We define $A\tens_T B=\Gamma_0(\mathfrak{A}\tens_T \mathfrak{B})$
+	
+	%We recognize this as the balanced tensor product $A\tens_{C(T)} B$. Thus we may write $A\tens B$ for $C_0(T,\tilde{A}\tens_T \tilde{B})$.
+\end{definition}
+\begin{definition}
+	Let $A$, $B$ and $C$ be Real graded \Cstar algebras. Assume that $C\subset A$ and $C\subset B$, and that $C$ lies in the center of both $A$ and $B$. Consider $A\tens B$, and consider the closed subspace of $A\tens B$, $N=\overline{\{ac\tens b-a\tens cb | a\in A, b\in B, c\in C\}}$. This defines an ideal as $C$ lies in the center of both $A$ and $B$. Define the balanced tensor product of $A$ and $B$ over $C$:
+	\begin{align*}
+		A\tens_C B = (A\tens B)/N
+	\end{align*}
+\end{definition}
+The balanced tensor product allows us to characterize $A\tens_T B$ as a \Cstar-algebraic tensor product. 
+\begin{proposition}
+	Let $A\Gamma_0(\mathfrak{A})$ and $B=\Gamma_0(\mathfrak{B})$ be graded Real continuous trace algebras with spectrum $(T,\tau)$. Then $A\tens_T B=\Gamma_0(\mathfrak{A})\tens_{C_0(T)} \mathfrak{B})$.
+\end{proposition}
+\begin{proof}
+	Define $\Phi:A\tens B\to A(t) \tens B(t)$ by
+	\begin{align*}
+		\Phi(a\tens b)=a(t)\tens b(t)
+	\end{align*}
+	We wish to show $\Phi$ is continuous. Assume the minimal tensor product is given by $\pi_A(A)\tens \pi_B(B)$ on $H\tens K$ where $\pi_A$ and $\pi_B$ are faithful representations on $H$ and $K$. 
+	Denote the representation $a\mapsto a(t)$ as $\rho_A:$ and $b\mapsto b(t)$ by $\rho_B$. Then $\pi_A \osum \rho_A$ and $\pi_B \osum \rho_B$ are again faithful representations. The minimal tensor product is independent of the choice of faithful representation, so 
+	\begin{align*}
+		A\tens B&= (\pi_A \osum \rho_A)(A)\tens (\pi_B \osum \rho_B)(B) \\
+		&=\pi_A(A) \tens \pi_B(B) \osum \rho_A(A)\tens \rho_B(A) \osum \rho(A)\tens \pi_B(B)\osum \pi_A(A)\tens \rho_B(B)
+	\end{align*}
+	Define $p$ as the projection onto $\rho_A\tens \rho_B$, then 
+	\begin{align*}
+		p(A\tens B)=\rho_A(A) \tens \rho_B(B)
+	\end{align*}
+	is a contraction, hence:
+	\begin{align*}
+		\norm{\sum_{k=0}^m a_k(t) \tens b_k(t)} \leq \norm{\sum_{k=0}^m a_k \tens b_k}
+	\end{align*}
+	Thus $\Phi$ is continuous as a map $(a\tens b)\mapsto a(t)\tens b(t)$, and $t\mapsto (a\tens b)(t)$, and thus becomes a map of sections as desired. It is clear that $C_0(T,\tau)$ lies in the center of both algebras. Further, $(f a\tens b-a\tens f b)(t)=f(t)a(t)\tens b(t)-a(t)\tens f(t) b(t)=0$, so $\Phi$ descends to a map from the balanced tensor product. To see surjectivity, remark that expressions of the form $a\tens b$ span a dense subset of $A\tens_T B$,  in order to see that $\Phi$ is an isometry we apply \Cref{raeburnlemmaX}, so as $\Phi$ is an isometry it is also surjective.
+\end{proof}
+It is now an interesting question to consider whether a given continuous trace algebra is actually Morita equivalent to the algebra $C_0(T)$. It is exactly for this purpose that we introduce the Brauer group. Usually this is done through the Dixmier-Douady invariant, but this would require introducing the required homological machinery which would distract from the main theme of the thesis. 
+\begin{definition}
+	We define the Real graded Brauer group $BrR((T,\tau))$ as the set of Morita equivalence classes of Real graded continuous trace algebras over $(T,\tau)$. We denote Morita equivalence of $A$ and $B$  by the imprimitivity bimodule $W$ as $A\underbrace{\sim}_{Mor,W} C$
+\end{definition}
+Before we proceed, we need to show that this actually gives us a group, and check that we have a well-defined associative composition on it.	
+\begin{proposition}
+	The Real graded Brauer group is an abelian group with addition given by $\tens_T$, and the neutral element is given by $C_0(T,\tau)$, or equivalently $C_0(X,\K)$.
+\end{proposition}
+The proof of this proposition is broken apart into smaller bits and pieces, culminating in the classification of Real graded continuous trace algebras up to Morita equivalence. 
+\begin{definition}
+A left Hilbert \Cstar-module $E_A$ over $A$ is full if the set
+\begin{align*}
+\sum_{i=1}^{n} \ip{x_i}{y_i}_A \quad x_i,y_i\in E_A,n\in \N
+\end{align*}
+is norm dense in $A$. 
+\end{definition}
+
+
+\begin{lemma}
+	Given two \Cstar-algebras $A$ and $B$ and Hilbert C*-modules $E_A$ and $E_B$ over $A$ and $B$ respectively, if $E_A$ and $E_B$ are full, then so is $E_A\tens E_B$. 
+\end{lemma}
+\begin{proof}
+
+Given any element $a\in A$ and $b\in B$ and $\epsilon >0$, we can choose approximations:
+\begin{align*}
+&\norm{a- \sum_{i=1}^n \ip{x_i}{ y_i}_A}<\epsilon \\
+ &\norm{b- \sum_{j=1}^m \ip{u_j}{v_j}_B}<\epsilon 
+\end{align*}
+Then
+\begin{align*}
+\norm{a\tens b- \sum_{i,j} \ip{x_i\otimes u_j}{ y_i\otimes v_j}_{A\otimes B}}<\epsilon(\norm{a}+\norm{b}+\epsilon)
+\end{align*}
+Hence the linear span of $\ip{E_A\otimes E_B}{ E_A\otimes E_B}_{A\otimes B}$ is dense in  $A\otimes B$.
+\end{proof}
+
+\begin{lemma}
+	The sum on $BrR(T)$ is well-defined and associative. 
+\end{lemma}
+\begin{proof}
+We wish to show that the sum on the Brauer group is well-defined. Assume that $A\underbrace{\sim}_{Mor,W} C$ and $B\underbrace{\sim}_{Mor,Z} D$. We wish to show that $A\tens_T B\underbrace{\sim}_{Mor,W\tens_T Z} C\tens_T D$
+If $X$ and $Y$ are full Hilbert $A$ and $B$-modules respectively, then the exterior tensor product $X\tens Y$ is a full Hilbert $A\tens B$-module. In case that $X$ and $Y$ are imprimitivity modules, $X$ and $Y$ are both bimodules so a priori we have two different versions of $X\tens Y$ based on the two different choices of norms. These will however coincide in this case as by assumption the left and right inner products on $X$ and $Y$ give rise to norms which agree. 
+Thus $W\tens Z$ is an $A\tens B-C\tens D$ imprimitivity bimodule. Let $I$ be the ideal in $A\tens B$ generated by $\tilde{I}=\{f\in C_0(T\times T,\tau \times \tau) \mid f(t,t)=0\}\subset A\tens B$, and hence $I=\tilde{I}(A\tens B)$. Then recall that $A\tens_T B=(A\tens B)/I$ and define the space: 
+\begin{align*}
+	W\tens_T Z=(W\tens Z)/\overline{I(W\tens Z)} 
+\end{align*}
+where we take the closure as an $A\tens B$-submodule. The linear span of the range of the map \begin{align*} {}_{A\tens B}\ip{\cdot}{\cdot}:W\tens Z\times W\tens Z\to A\tens B \end{align*} is dense. Thereby the induced map $(W\tens Z)/\overline{I(W\tens Z)}\times (W\tens Z)/(\overline{I(W\tens Z)}) \to (A\tens B)/I$ also has range with dense span. Using the characterization of $A\tens_T B$, we see that this is simply the map
+\begin{align*} 
+	{}_{A\tens_T B} \ip{\cdot}{\cdot}:W\tens_T Z\times W\tens_T Z\to A\tens_T B
+\end{align*}
+where we may then conclude that the span of the range of this map is dense.
+As we have assumed that $W$ and $Z$ are imprimitivity bimodules, $(W\tens Z)/\overline{W\tens Z(\tilde{I}C\tens D)}=W\tens_T Z$ as defined above. Hence, repeating the proof, we get that $\ip{\cdot}{\cdot }_{C\tens_T D}: W\tens_T Z\times W\tens_T Z\to C\tens_T D$ also has range with dense span in $C\tens_T D$. The intertwining conditions for the maps $\sigma$ and $\tau$ on the inner product follow from the assumption that they hold entry-wise. Thus $W\tens_T Z$ is an $A\tens_T B-_T C\tens_T D$ imprimitivity bimodule. 
+
+\begin{comment}
+	Therefore consider the algebraic tensor product $W\odot Z$ defined as 
+	Consider $W\odot Z$ with right-seminorm defined as
+	\begin{align*}
+		&\sum_{i=1}^n \xi_i\tens \eta_i \in W\odot Z \\
+		&\norm{\sum_{i=1}^n \xi_i\tens \eta_i}_{W\tens Z}^2=\norm{\sum_{i,j=1}^n \ip{\xi_i}{\xi_j}_C \tens \ip{\eta_i}{\eta_j}_D}_{C\tens_T D} \\
+		&\mathcal{N}=\{z\in W\odot Z \mid \norm{z}_{W\tens Z}=0 \} \\
+		&V=\overline{(W\odot Z)/\mathcal{N}}^{\norm{\cdot}_{W\tens Z}}
+	\end{align*}
+	and define the left-norm analogously. 
+	Note that the choice of left or right-norm is irrelevant for the completion as the two norms agree since $W$ and $Z$ are both assumed to be imprimitivity modules. 
+	%For every $t\in T$, the module ${W(t)\tens Z(t)}$ is clearly an $A(t)\tens B(t)-C(t)\tens D(t)$ imprimitivity bimodule. 
+	%We need to show that $\sum_{i=1}^n \xi_i \tens \eta_i$ defines a continuous section of $W\tens Z$ over $(T,\tau)$. Thus 
+	%\begin{align*}
+	%	\norm{\pa{\sum_{i=1}^n \xi_i\tens \eta_i}(t)}_{W\tens Z}^2=\norm{\sum_{i,j=1}^n \ip{\xi_i(t)}{\xi_j(t)}\tens\ip{\eta_i(t)}{\eta_j(t)}}_{W(t)\tens Z(t)}.
+	%\end{align*}
+	%The right-hand side is continuous in $t$, showing that the map \begin{align*} t \mapsto \norm{\pa{\sum_{i=1}^n \xi_i\tens \eta_i}(t)}_{W\tens Z} \end{align*}
+	%is continuous. Therefore
+	We need to show that $V$ is an $(A\tens_T B)-_T(C\tens_T D)$ imprimitivity module.  By definition, the left inner product is $A\tens_T B$-valued, and the image of inner product from $W$ is dense in $A$ and the image of the inner product from $Z$ is dense in $B$. Therefore, given an element $z=\sum_{i=1}^n x_i\tens y_i \in A\tens_T B,x_i\in A,y_i\in B$ and any $\epsilon>0$ there are elements $\xi\in Z\odot W$ and $\eta\in Z\odot W$ such that $\norm{{}_{A\tens_T B}\ip{\xi}{\eta}-z}<\epsilon$. 
+	By definition of the completion of $Z\tens W$ and the characterization of $A\tens_T B$ in \Cref{density} we may approximate any element in $A\tens_T B$ in this fashion, showing fullness. The proof for the right-inner product is the same. 
+	\end{comment}
+	%Thus consider $(W\odot Z)(t)=W(t)\odot Z(t)$. Consider $(W\tens Z)(t)=Z(t)\tens W(t)$, where choosing the left or right norm for $Z(t)$ and $W(t)$ give the same completion. This is clearly a $A(t)\tens B(t)-C(t)\tens D(t)$ imprimitivity bimodule. Therefore given any section $f\geq 0\in A\tens_T B$, there is an element $f'\in (W \tens Z)$ such that $\ip{f'}{f'}(t)=f(t)$ for all $t\in T$. Thus by \Cref{raeburnlemmaX}, $\ip{f'}{f'}=f$.
+	Associativity may be proven in much the same fashion, but one needs to take extra care due to the third term, the proof of associativity may be found in \cite[Theorem 6.3]{raeburncont}.
+\end{proof}
+The second tool we shall be needing is the definition of our candidate inverse in the Brauer group.
+\begin{definition}
+	Let $(A,\sigma)$ be a Real graded \Cstar bundle over $(T,\tau)$. Then we define the conjugate $\overline{A}$ as the algebra $A$, equipped with the conjugate vector space structure. Letting $\beta$ be the identity mapping as sets, $A\to \overline{A}$:
+	\begin{align*}
+		\beta(a)\beta(b)&=\beta(ab) \\
+		\beta(a)^*&=\beta(a^*) \\
+		\beta(\lambda a)&=\overline{\lambda} \beta{a} \\
+		\sigma(\beta(a))&=\beta(\sigma(a))
+	\end{align*}
+\end{definition}
+We now have all the tools at our disposal to show the Brauer Group is a group, where we diverge from the usual approach of the literature which is to show that it is an associative semi-group isomorphic to the cohomology groups in which the Dixmier-Douady invariant lives. 
+We shall show the conjugate algebra is the additive inverse in the Brauer group in several steps. 
+\begin{proposition}\label{pic16}
+	Letting $A$ and $B$ be Real graded \Cstar-algebras with the same Real primitive ideal space $(T,\tau)$, and let $X$ be a $A-_T B$ imprimitivity bimodule. If $K$ is a closed subset of $T$ and $U$ is an open subset of $K$, then the quotient map $\rho:X\to X^K$ induces a bijection $X_{T\setminus U} \to (X^K)_{K\setminus U}$.
+\end{proposition}
+For a proof, see \cite[Proposition 1.5, Corollary 1.6]{picard} or \cite[Lemma 5.34]{raeburncont}.
+\begin{lemma}\label{lemmacocycle}
+	If $X$ is an $A-_TC_0(T,(Cl_{0,n},\sigma))$ imprimitivity bimodule, and $g:X\to X$ is an imprimitivity  bimodule isomorphism, then there is a function $\phi \in C(T,S^1)$ such that $g(x)=x\cdot \phi=\phi \cdot x$. 
+\end{lemma}
+\begin{proof}
+	First note that $C(T,,S^1)\subset C(T,(Cl_{0,n},\sigma))$ for all $n$. 
+	Then fix $t\in T$ and choose $x\in X$, such that $\ip{x}{x}_{C_0(T)}(t)\neq 0$. Then define the function $\phi_x(s)$ for $s$ near enough to $t$ so that the inner product is non-zero: 
+	\begin{align*}
+		\phi_x(s)\ip{x}{x}_{C_0(T)}(s)=\ip{x}{g(x)}_{C_0(T)}(s)
+	\end{align*}
+	In order to see that $\phi_x$ is well-defined, i.e. independent of our choice of $x$, consider the calculation below 
+	\begin{align*}
+		\ip{x}{g(x)}_{C_0(T)}\ip{y}{g(y)}_{C_0(T)}&=\ip{x}{g(x)\cdot \ip{y}{g(y)}_{C_0(T)}}_{C_0(T)} \\
+		&=\ip{x}{{}_A\ip{g(x)}{g(y)}\cdot_y}_{C_0(T)} \\ 
+		&=\ip{x}{{}_A\ip{x}{y}y}_{C_0(T)} \\
+		&=\ip{x}{x}_{C_0(T)}\ip{y}{y}_{C_0(T)}
+	\end{align*}
+	This shows that $\phi_x(s)=\phi_y(s)$ when both are defined, and $|\phi_x(s)|=1$. Now consider $\ip{y}{g(x)}_{C_0(T)}(t)$ and apply the polarization to this sesquilinear form:
+	\begin{align*}
+		\ip{y}{g(x)}_{C_0(T)}(t)=\frac{1}{4}\pa{\sum_{k=0}^3 i^k\ip{g(x+y)}{x+y}_{C_0(T)}(t)} 
+	\end{align*}
+	As $\phi_x(t)$ is well-defined, we can expand this sum to 
+	\begin{align*}
+		\frac{1}{4}\pa{\sum_{k=0}^3 i^k\phi_x(t)\ip{x+y}{x+y}_{C_0(T)}(t)}=\phi_x(t)\ip{x}{y}_{C_0(T)}(t)
+	\end{align*}
+	Therefore the functions $\phi_x$ paste together to a continuous function $\phi: T\to S^1$ satisfying $g(x)=x \cdot \phi$ for all $\phi$.
+\end{proof}
+We can now show that the sum has the claimed neutral element. 
+\begin{lemma}
+	The group $BrR(X)$ has $C_0(T,\K)$ as neutral element, and the inverse is given by $\overline{A}$ .
+\end{lemma}
+\begin{proof}
+	It is clear that the operation of tensoring with $C_0(T,\K)$ is the identity, since $C_0(T,\K)$ is Morita Equivalent to $C_0(T,(Cl_{0,0},\sigma))$. In this proof we will write $C_0(T)$ as shorthand for for $C(T,(Cl_{0,n},\sigma))$ to unclutter the notation. 
+	As $A=C_0(X,\mathfrak{A})$ has continuous trace, it follows from an adaptation of results in \cite[Chapter 5]{raeburncont} that there are compact sets $F_i$ whose interiors $U_i$ form a real cover of $X$ such that 
+	\begin{enumerate}
+		\item For every $i \in I$ there is an $A^{F_i}-_{F_i}C(F_i)$ imprimitivity bimodule $X_i$, and 
+		\item
+		For every $i,j\in I$ there is an imprimitivity bimodule isomorphism \begin{align*} \phi_{ij}:X_j^{F_{ij}}\to X_i^{F_{ij}} \end{align*}
+	\end{enumerate}
+	From this point we break the proof into three parts, first showing that we have a system of cocycles in order to construct a candidate imprimitivity bimodule. In the second part we show that our imprimitivity bimodule is essential locally, and in the third part we derive that we may extend our local results to the entirety of $(T,\tau)$.
+	\begin{enumerate}
+\item
+	There are coycles $\nu_{ijk}$ defined on $U_{ijk}$ such that $\nu_{ijk}: U_{ijk} \to S^1$ satisfies 
+		\begin{align*}
+			\phi_{ij}^{F_{ijk}}(\phi_{jk}^{Fijk}(x))=\nu_{ijk}\phi_{ik}^{F_{ijk}}
+		\end{align*}
+	To see this, we simply apply \Cref{lemmacocycle}, defining 
+	\begin{align*}
+		\nu_{ijk}=\phi_{ik}^{-1}\phi_{ij}\phi_{jk}
+	\end{align*}
+	In order to see that $\nu_{ijk}$ satisfies the cocycle condition, consider the calculation below
+	\begin{align*}
+		&\nu_{jkl}\nu_{ijl}^{-1}\nu_{ijl} \\
+		&=\phi_{jl}^{-1}\phi_{jk}\phi_{kl}(\phi_{li}\phi_{ik}\phi_{kl})^{-1}\phi_{il}^{-1}\phi_{ij}\phi_{jl} \\
+		&=\phi_{ik}^{-1}\phi_{ij}\phi_{jk} \\
+		&=\nu_{ijk}
+	\end{align*}
+	We may define the family of functions for $\overline{A}$ as $\phi_{ij}(\beta(x))=\beta(\phi_{ij}(x))$ as maps $\overline{X}_j^{F_{ij}}\to \overline{X}_i^{F_{ij}}$, where the corresponding cocycles are then conjugated. We define the system for $A\tens_{X} \overline{A}$ by $F_i$, $(X_i\tens_{ C_{F_i}} \overline{X}_i)$ with $h_{ij}=\phi_{ij}\tens \overline{\phi}_{ij}$. We define the module 
+	\begin{align*}
+		Y'=\left \{ (y_i)\in \prod_{i\in I} X_i\tens \overline{X}_i: h_{ij}(y_{j}^{F_{ij}})=y_i^{F_{ij}} \right \}
+	\end{align*}
+	The system of cocycles associated to $Y$ is $\nu_{ijk}\tens \overline{\nu_{ijk}}=\nu_{ijk} \overline{\nu_{ijk}}\tens 1=1$. Thus we get a globally well-defined inner product, which for $t\in F_{ij}$ is defined as:
+	\begin{align*}
+		{}_{A\tens_X \overline{A}}\ip{x}{y}(t)={}_{{A\tens_X \overline{A}}^{F_i}}\ip{x}{y}(t) \\
+		\ip{x}{y}_{C_0(T,\tau)}(t)=\ip{x_i}{x_i}_{C(F_i)}(t)
+	\end{align*}
+	The space $Y$ admits natural actions by left $A\tens_T \overline{A}$-action since it does so locally and the cocycles are the identity, and by right actions of $C_0(T)$ through the same argument.
+	From $Y'$  we define the bimodule 
+	\begin{align*}
+		Y=\left \{ y\in Y' : t\to \ip{y}{y}_{C_0(T,\tau)}(t) \text{ vanishes at } \infty \right \}
+	\end{align*}
+\item
+	Thus we need to show this is a $A\tens_T \overline{A}-_TC_0(T,\tau)$ imprimitivity bimodule. 
+	The only results we shall show are that our candidate module is essential and complete. For completeness, let $(y_n)$ be a Cauchy sequence in $Y'$. Then $y_i^n$ is a Cauchy sequence in $Y_i$ with limit $y_i$. To see that this lies in $Y$ observe that $\norm{\ip{y_i}{y_i}_{C_0(F_i)}(t)}$ vanishes at infinity as it is the uniform limit of the functions $\norm{\ip{y_i^n}{y_i^n}_{C_0(T)}^{F_i}(t)}$. Further $y_n\to y_i$ as $\norm{y_n(t)-y_m(t)}\to 0$ uniformly in $t$. We need our rather technical lemma to show that our inner product has dense range, and we only show it for one side as the other is entirely analogous. 
+	All our objects are $C_0(T)$-linear, it suffices by \Cref{raeburn53} to show that for every $a\in A\tens_T \overline{A}$ we may approximate $a(t)$ by some finite sum of inner products. Assume that $t$ lies in the interior $U_i$ of some $F_i$. We may then multiply $a$ by a function in $C_0(U)$ which is $1$ at $t$ allows us to assume that $a\in  (A\tens_T \overline{A})_{F_i\setminus U_i}$. As $(Y_i)_{F_i\setminus U_i}$ is an $A\tens_T \overline{A}^{F_i}-_{F_i} C_0(T)^{F_i}$-imprimitivity bimodule, for all $\epsilon>0$ we may find elements $y_i^m,z_i^m \in (A\tens_T \overline{A})_{F_i\setminus U_i}$ so that
+	\begin{align*}
+		\norm{\sum_m{}_{A\tens_T \overline{A}^{F_i}}\ip{y_i^m}{z_i^m}-a(t)}<\epsilon
+	\end{align*}
+	What we need to show now is that we can extend our elements, ie. find elements $y_j^m$ and $z_j^m$ satisfying: 
+\begin{align*}
+	&(y_j^m)^{F_{ij}}=h^{-1}_{ij}\pa{(y_i^m)^{F_{ij}}} \\
+	&(z_j^m)^{F_{ij}}=h_{ij}^{-1}((z_i)^{F_{ij}}
+\end{align*}
+The subject of finding these is the last part of our effort. 
+\item 
+	Let $i\in I$ be fixed and assume that $U\subset F_i$ is open and $y\in (Y_i)_{F_{i}\setminus U}$. Then for every $j\neq i$ there is a $y_j\in (Y_{j})_{F_j\setminus U}$ such that 
+	\begin{align*}
+		h_{jk}\pa{y_k^{F_{jk}}}=y_j^{F_{jk}}, \quad \text{ for all }j,k\in I
+	\end{align*}
+	Define $z_j\in Y_j^{F_{ij}}$ as $z_j=h_{ji}(y_i^{F_{ij}}),j\neq i$. We remark that $z_j\in (Y_j^{F_{ij}})_{F_{ij}\setminus U}$ as $h_{ji}=h_{ij}^{-1}$ preserves the  inner product. By \Cref{pic16} we see that for every $j\neq i$ we may find $y_j\in (Y_j)_{F_j\setminus U}$ satisfying $y_j^{F_{ij}}=z_j$, where the lemma trivially holds if $j$ or $k$ equals $i$. Thus assume that $j\neq i,k\neq i$. It suffices to show the following for $w\in Y^{F_{jk}}$ and $t\in F_{jk}$. 
+	\begin{align}\label{picardeq}
+		\ip{h_{jk}(y_k^{F_{jk}})}{w}_{A^{F_{jk}}}(t)=\ip{y_j^{F_{jk}}}{w}_{A^{F_{jk}}}(t)
+	\end{align} 
+
+	If $t\nin F_i$, then $t\nin U$ implying that 
+	\begin{align*}
+		\ip{y_j}{y_j}_{A^{F_j}}(t)=\ip{y_k}{y_k}_{A^{F_k}}(t)=0
+	\end{align*}
+	so that by the Cauchy-Schwarz equality everything in \Cref{picardeq} is zero.
+	For $t\in F_i$ we have the following equalities. 
+	\begin{align*}
+		\ip{h_{jk}(y_k^{F_{jk}})}{w}_{A^{F_{jk}}}(t)&=\ip{h_{jk}^{F_{ijk}}(y_k^{F_{ijk}}}{w^{F_{ijk}}}_{A^{F_{ijk}}}(t) \\
+		&=\ip{h_{jk}^{F_{ijk}}h_{ki}^{F_{ijk}}(y_i^{F_{ijk}})}{w^{F_{ijk}}}_{A^{F_{ijk}}}(t) \\
+		&=\ip{h_{ji}^{F_{ijk}}(y_i^{F_{ijk}})}{w^{F_{ijk}}}_{A^{F_{ijk}}}(t) \\
+		&=\ip{y_j^{F_{ijk}}}{w^{F_{ijk}}}_{A^{F_{ijk}}}(t)
+	\end{align*}
+	This shows that the extensions exist, by inspecting \Cref{picardeq}. 
+\end{enumerate}
+Thereby we have shown the desired. 
+\end{proof}
+This shows the lemma, leading us to the following corollary giving the classification. 
+\begin{corollary}
+	Let $(A,\sigma_A)$ and $(B,\sigma_B)$ be Real graded continuous trace \Cstar-algebras over a locally compact Real space $(T,\tau)$. Then $A$ and $B$ are Morita equivalent if and only if $(A\tens \overline{B},\sigma_A \tens \overline{\sigma_B})$ is Morita equivalent to $C_0(T,\K))$ as bundles over $T$. 
+\end{corollary}
+%The result we have just shown implies that every Real graded \Cstar algebra has 2-torsion as an element in the Brauer group, since $A\cong A^{op}\cong \beta(A)$. 
+%This leads to a class of examples by Philips, \cite{philips}, of continuous trace algebras which are not Real. 
+
+In \cite{rosenberg} there are several examples given of how to compute this group in practice, but doing so requires tools outside the scope of this thesis. We remark that all these results are only the context of real spaces here, but the proofs are very close to the ones in \cite{moutou} and \cite{renault} for Real graded \Cstar-algebras with Real groupoid actions. 
